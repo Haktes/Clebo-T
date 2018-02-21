@@ -1,4 +1,4 @@
-package eu.haktes.trav.clebo_t;
+package eu.haktes.clebo_t;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package eu.haktes.trav.projectA;
+package eu.haktes.clebo_t;
 
 //treba mat stiahnutu 1.8 JDK
 

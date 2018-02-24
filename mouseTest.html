@@ -19,6 +19,15 @@
 	height: 100%;
 }
 
+div#absolute {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+}
+
   </style>
 
   <title>Mouse test webiste 1.1</title>
@@ -44,7 +53,8 @@ window.onload=function(){
 	var last_mouse = {x: 0, y: 0};	
 
 	/* Mouse Capturing Work */
-	canvas.addEventListener('mousemove', function(e) {
+	var html = document.querySelector('html')
+	html.addEventListener('mousemove', function(e) {
 		last_mouse.x = mouse.x;
 		last_mouse.y = mouse.y;
 
@@ -101,9 +111,14 @@ window.onload=function(){
 
 </head>
 <body>
+<div id="absolute">
+	div - id: absolute
+</div>
   <div id="sketch">
 	<canvas id="paint" width="432" height="323"></canvas>
 </div> 
+
+
 
 </body>
 </html>

@@ -44,16 +44,14 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
 				<configuration>
-					<!-- exclude log4j.properties
-					<excludes>
-						<exclude>**/log4j.properties</exclude>
-					</excludes> -->
+					<!-- exclude log4j.properties <excludes> <exclude>**/log4j.properties</exclude> 
+						</excludes> -->
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
 							<mainClass>
-								eu.haktes.clebo_t.App
+								eu.haktes.clebo_t.BotAppStart
 							</mainClass>
 						</manifest>
 					</archive>
@@ -73,7 +71,7 @@
 							<archive>
 								<manifest>
 									<mainClass>
-										eu.haktes.clebo_t.App
+										eu.haktes.clebo_t.BotAppStart
 									</mainClass>
 								</manifest>
 							</archive>
@@ -116,7 +114,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- log4j 2 -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>

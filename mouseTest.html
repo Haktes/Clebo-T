@@ -1,0 +1,109 @@
+
+
+<html><head>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+
+  <style type="text/css">
+
+    html, body {
+	padding:0px;
+	margin:0px;
+	width: 100%;
+	height: 100%;
+}
+
+#sketch {
+	border: 1px solid gray;
+	height: 100%;
+}
+
+  </style>
+
+  <title>Mouse test webiste 1.1</title>
+
+
+
+<script type="text/javascript">//<![CDATA[
+
+window.onload=function(){
+
+(function() {
+	var canvas = document.querySelector('#paint');
+	var ctx = canvas.getContext('2d');
+	var lastTextPos = 30;
+	var count = 0;
+
+	var sketch = document.querySelector('#sketch');
+	var sketch_style = getComputedStyle(sketch);
+	canvas.width = parseInt(sketch_style.getPropertyValue('width'));
+	canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+
+	var mouse = {x: 0, y: 0};
+	var last_mouse = {x: 0, y: 0};	
+
+	/* Mouse Capturing Work */
+	canvas.addEventListener('mousemove', function(e) {
+		last_mouse.x = mouse.x;
+		last_mouse.y = mouse.y;
+
+		mouse.x = e.pageX - this.offsetLeft;
+		mouse.y = e.pageY - this.offsetTop;		
+
+		console.log("i:"+count+"   x:"+mouse.x+"  y:"+mouse.y +"  t:"+Math.round(+new Date()));
+		ctx.font = "13px Arial";
+		ctx.fillStyle = "black";
+		ctx.fillText(("i:"+count+"   x:"+mouse.x+"  y:"+mouse.y +"  t:"+Math.round(+new Date())),10,lastTextPos);
+		count = count+1;
+		lastTextPos += 14
+		if (lastTextPos>500) {		
+			// clear rect
+			ctx.beginPath();
+			ctx.fillStyle="white";
+			ctx.fillRect(0,0,250,500);
+			ctx.stroke();			
+
+			lastTextPos = 30
+		};
+	}, false);
+
+	/* Drawing on Paint App */
+
+	ctx.lineWidth = 5;
+	ctx.lineJoin = 'round';
+	ctx.lineCap = 'round';
+	ctx.strokeStyle = 'blue';	
+
+	//canvas.addEventListener('mousedown', function(e) {
+	//	canvas.addEventListener('mousemove', onPaint, false);
+	//}, false);	
+
+	canvas.addEventListener('mousemove', function(e) {
+		canvas.addEventListener('mousemove', onPaint, false);
+	}, false);	
+
+	//canvas.addEventListener('mouseup', function() {
+	//	canvas.removeEventListener('mousemove', onPaint, false);
+	//}, false);	
+
+	var onPaint = function() {
+		ctx.beginPath();
+		ctx.moveTo(last_mouse.x, last_mouse.y);
+		ctx.lineTo(mouse.x, mouse.y);
+		ctx.closePath();
+		ctx.stroke();
+	};
+
+}());
+}//]]> 
+</script> 
+
+</head>
+<body>
+  <div id="sketch">
+	<canvas id="paint" width="432" height="323"></canvas>
+</div> 
+
+</body>
+</html>

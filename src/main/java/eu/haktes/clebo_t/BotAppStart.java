@@ -5,16 +5,11 @@ package eu.haktes.clebo_t;
  */
 public class BotAppStart {
 	
-
-	
 	public static void main(String[] args) {
 		
 		System.out.println("Bot starting");		
 		Bot bot = new Bot();
-		bot.start();
-		
+		bot.start();	
 		
 	}
-	
-
 }

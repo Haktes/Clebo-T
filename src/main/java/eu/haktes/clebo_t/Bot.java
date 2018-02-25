@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -20,19 +21,13 @@ public class Bot {
 
 	private static final Logger LOG = (Logger) LogManager.getLogger(Bot.class);
 	private static final String DRIVER_PATH = "C:\\Java\\chromedriver.exe";
+	private Properties properties;
 	public WebDriver driver;
 
 	public void start() {
 		LOG.info("BOT started");
-		// Properties properties = new Properties();
-		// try {
-		// properties = new GetPropertyValues().getPropValues();
-		// } catch (IOException e1) {
-		// // TODO Auto-generated catch block
-		// e1.printStackTrace();
-		// }
-		// System.out.println(properties.getProperty("s1.address"));
 
+		//getProperties();
 		startDriver();
 
 		driver.get("C:\\workspace-sts\\Clebo-T\\mouseTest.html");
@@ -90,17 +85,31 @@ public class Bot {
 		if (f.exists() && f.isFile()) {
 			LOG.info("DRIVER - Driver located at defined path, starting.");
 			System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
+			
+			System.setProperty("webdriver.chrome.silentOutput", "true");//disable red console messages
 			this.driver = new ChromeDriver();
 		} else {
-			LOG.error("DRIVER - Not found at defined path! " + DRIVER_PATH);
+			LOG.error("DRIVER - Not found at defined path! Download chromedriver.exe to " + DRIVER_PATH);
 			LOG.error("Terminating application");
 			System.exit(1);
 		}
 
-		// String currentDirectory;
-		// File file = new File(".");
-		// currentDirectory = file.getAbsolutePath();
-		// System.out.println("Current working directory : " + currentDirectory);
+		// ChromeOptions chromeOptions = setupChromeOptions();
+		// System.setProperty("webdriver.chrome.logfile", "\\path\\chromedriver.log");
+		// System.setProperty("webdriver.chrome.driver", "\\path\\chromedriver.exe");
+		// System.setProperty("webdriver.chrome.args", "--disable-logging");
+		// System.setProperty("webdriver.chrome.silentOutput", "true");
+		// driver = new ChromeDriver(chromeOptions);
+	}
+
+	private void getProperties() {
+		try {
+			this.properties = new GetPropertyValues().getPropValues();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		LOG.debug("Test, get properties: "+properties.getProperty("s1.address"));
 	}
 
 }

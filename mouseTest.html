@@ -26,11 +26,12 @@ div#absolute {
     width: 200px;
     height: 100px;
     border: 3px solid #73AD21;
+	 background-color: transparent;
 }
 
   </style>
 
-  <title>Mouse test webiste 1.1</title>
+  <title>Mouse test webiste 1.6</title>
 
 
 
@@ -53,8 +54,8 @@ window.onload=function(){
 	var last_mouse = {x: 0, y: 0};	
 
 	/* Mouse Capturing Work */
-	var html = document.querySelector('html')
-	html.addEventListener('mousemove', function(e) {
+	var body = document.querySelector('html')
+	body.addEventListener('mousemove', function(e) {
 		last_mouse.x = mouse.x;
 		last_mouse.y = mouse.y;
 
@@ -83,14 +84,14 @@ window.onload=function(){
 	ctx.lineWidth = 5;
 	ctx.lineJoin = 'round';
 	ctx.lineCap = 'round';
-	ctx.strokeStyle = 'blue';	
+	ctx.strokeStyle = 'blue';
 
 	//canvas.addEventListener('mousedown', function(e) {
 	//	canvas.addEventListener('mousemove', onPaint, false);
 	//}, false);	
 
-	canvas.addEventListener('mousemove', function(e) {
-		canvas.addEventListener('mousemove', onPaint, false);
+	body.addEventListener('mousemove', function(e) {
+		body.addEventListener('mousemove', onPaint, false);
 	}, false);	
 
 	//canvas.addEventListener('mouseup', function() {
@@ -102,7 +103,9 @@ window.onload=function(){
 		ctx.moveTo(last_mouse.x, last_mouse.y);
 		ctx.lineTo(mouse.x, mouse.y);
 		ctx.closePath();
+		if( last_mouse.x > 0 && last_mouse.y > 0){
 		ctx.stroke();
+		}
 	};
 
 }());
@@ -111,10 +114,13 @@ window.onload=function(){
 
 </head>
 <body>
-<div id="absolute">
-	div - id: absolute
-</div>
+
   <div id="sketch">
+  
+  <div id="absolute" onmouseover="document.getElementById( 'absolute' ).style.borderColor = 'red';">
+	div - id: absolute
+	</div>
+
 	<canvas id="paint" width="432" height="323"></canvas>
 </div> 
 

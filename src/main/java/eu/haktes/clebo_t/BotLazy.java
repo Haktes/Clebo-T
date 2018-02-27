@@ -23,48 +23,18 @@ import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
 import eu.haktes.clebo_t.interaction.mouse.MovementPath;
 import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
 
-public class Bot {
+public class BotLazy {
 
-	private static final Logger LOG = (Logger) LogManager.getLogger(Bot.class);
+	private static final Logger LOG = (Logger) LogManager.getLogger(BotLazy.class);
 	private static final String DRIVER_PATH = "C:\\Java\\chromedriver.exe";
 	private Properties properties;
 	private WebDriver driver;
 	private Point lastMousePos = new Point(3, 500);
 
 	public void start() {
-		LOG.info("BOT started");
-		getProperties();
-		startDriver();
+		LOG.info("Lazy BOT started");
 
-		BasicActions basicActions = new BasicActions(driver);
-		basicActions.loginUser(properties.getProperty("s1.nick"), properties.getProperty("s1.pass"),
-				properties.getProperty("s1.address"));
-		Resources resources = new Resources();
-		basicActions.getResources(resources);
-
-		MoveMouse moveMouse = new MoveMouse(driver);
-		MovementPath pathGenerator = new MovementPathSimple();
-
-		WebElement weKupZlatky = driver.findElement(By.id("n7"));
-		moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weKupZlatky));
-		weKupZlatky.click();
-
-		// driver.get("C:\\workspace-sts\\Clebo-T\\mouseTest.html");//test
-		// driver.findElement(By.id("absolute");
-
-		// Actions builder = new Actions(driver);
-		// builder.keyDown(Keys.CONTROL)
-		// .click(driver.findElement(By.id("paint")))
-		// .moveByOffset( 40, 40 ).moveByOffset( 40, 10 ).moveByOffset( 40, 0 )
-		// .click(driver.findElement(By.id("paint")))
-		// .keyUp(Keys.CONTROL).build().perform();
-
-		// try {
-		// Thread.sleep(1);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		// just an example
 
 		// close after 10 seconds
 		try {
@@ -92,9 +62,6 @@ public class Bot {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		closeDriver();
-		quitDriver();
 
 	}
 

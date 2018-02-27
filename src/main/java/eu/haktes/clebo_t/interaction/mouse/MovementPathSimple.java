@@ -35,7 +35,7 @@ public class MovementPathSimple extends MovementPathTemplate implements Movement
 		int pathPartC = (int) (distance / (steps));
 		
 		Random rand = new Random();
-		final int NOISE = 2; 
+		final int NOISE = 1; 
 		
 		List<int[]> list = new ArrayList<>();		
 		int x = startPosition.x;

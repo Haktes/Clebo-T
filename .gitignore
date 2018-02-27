@@ -3,6 +3,13 @@
 
 # Log file
 *.log
+log/
+
+#maven
+target/
+
+#sensitive properties
+src/main/resources/application.properties
 
 # eclipse project file
 .settings/
@@ -22,3 +29,7 @@
 *.zip
 *.tar.gz
 *.rar
+
+#git rm -r --cached .
+#git add .
+#git commit -m "fixed untracked files"

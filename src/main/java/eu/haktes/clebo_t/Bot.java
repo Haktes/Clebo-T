@@ -9,13 +9,17 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
-import eu.haktes.clebo_t.interaction.MovementPathSimple;
+import eu.haktes.clebo_t.actions.BasicActions;
+import eu.haktes.clebo_t.actions.Resources;
+import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
 
 public class Bot {
 
@@ -26,26 +30,31 @@ public class Bot {
 
 	public void start() {
 		LOG.info("BOT started");
-
-		//getProperties();
+		getProperties();
 		startDriver();
 
-		driver.get("C:\\workspace-sts\\Clebo-T\\mouseTest.html");
-		// driver.manage().window().setSize(new Dimension(1024,768));
+		BasicActions basicActions = new BasicActions(driver);
+		basicActions.loginUser(properties.getProperty("s1.nick"), properties.getProperty("s1.pass"),properties.getProperty("s1.address"));
+		Resources resources = new Resources();
+		basicActions.getResources(resources);
+		
 
-		List<int[]> list = new ArrayList<>();
-		list = new MovementPathSimple().getMovementArray(new Point(3, 500), driver.findElement(By.id("absolute")));
+		
 
-		WebElement weblementBody = driver.findElement(By.cssSelector("body"));
-		Actions moveMouse = new Actions(driver);
-		moveMouse.moveToElement(weblementBody, 3, 500).perform(); // initial position
+		// List<int[]> list = new ArrayList<>();
+		// list = new MovementPathSimple().getMovementArray(new Point(3, 500),
+		// driver.findElement(By.id("absolute")));
+		//
+		// WebElement weblementBody = driver.findElement(By.cssSelector("body"));
+		// Actions moveMouse = new Actions(driver);
+		// moveMouse.moveToElement(weblementBody, 3, 500).perform(); // initial position
+		//
+		// for (int[] pole : list) {
+		// moveMouse.pause(10).moveByOffset(pole[0], pole[1]).perform();
+		// }
+		// moveMouse = null;
 
-		for (int[] pole : list) {
-			moveMouse.pause(10).moveByOffset(pole[0], pole[1]).perform();
-		}
-		moveMouse = null;
-
-		Actions builder = new Actions(driver);
+		// Actions builder = new Actions(driver);
 		// builder.keyDown(Keys.CONTROL)
 		// .click(driver.findElement(By.id("paint")))
 		// .moveByOffset( 40, 40 ).moveByOffset( 40, 10 ).moveByOffset( 40, 0 )
@@ -63,18 +72,40 @@ public class Bot {
 		// e.printStackTrace();
 		// }
 		//
-		// LOGGER.debug("Log4j debug");
-		// LOGGER.info("Log4j info");
-		// LOGGER.warn("Log4j warn");
-		//
 		// builder.click(driver.findElement(By.cssSelector("body"))).moveByOffset(40,
 		// 40).moveByOffset(40, 10)
 		// .moveByOffset(40, 0).build().perform();
 		//
-		// LOGGER.info("Closing driver");
-		// driver.close();
-		// LOGGER.info("Quitting driver");
-		// driver.quit();
+		
+		// close after 10 seconds
+		try {
+		Thread.sleep(1000);		
+		LOG.info("exit in 10");
+		Thread.sleep(1000);
+		LOG.info("exit in 9");
+		Thread.sleep(1000);
+		LOG.info("exit in 8");
+		Thread.sleep(1000);
+		LOG.info("exit in 7");
+		Thread.sleep(1000);
+		LOG.info("exit in 6");
+		Thread.sleep(1000);
+		LOG.info("exit in 5");
+		Thread.sleep(1000);
+		LOG.info("exit in 4");
+		Thread.sleep(1000);
+		LOG.info("exit in 3");
+		Thread.sleep(1000);
+		LOG.info("exit in 2");
+		Thread.sleep(1000);
+		LOG.info("exit in 1");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		closeDriver();
+		quitDriver();
 
 	}
 
@@ -85,9 +116,15 @@ public class Bot {
 		if (f.exists() && f.isFile()) {
 			LOG.info("DRIVER - Driver located at defined path, starting.");
 			System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
+
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.addArguments("--mute-audio");
 			
-			System.setProperty("webdriver.chrome.silentOutput", "true");//disable red console messages
-			this.driver = new ChromeDriver();
+			//System.setProperty("webdriver.chrome.args", "--disable-logging");
+			//System.setProperty("webdriver.chrome.silentOutput", "true");// disable red console messages
+			this.driver = new ChromeDriver(chromeOptions);
+			// driver.get("C:\\workspace-sts\\Clebo-T\\mouseTest.html");
+			// driver.manage().window().setSize(new Dimension(1024,768));
 		} else {
 			LOG.error("DRIVER - Not found at defined path! Download chromedriver.exe to " + DRIVER_PATH);
 			LOG.error("Terminating application");
@@ -107,9 +144,19 @@ public class Bot {
 			this.properties = new GetPropertyValues().getPropValues();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
+			LOG.error("application.properties not found! read application_sample");
 			e1.printStackTrace();
 		}
-		LOG.debug("Test, get properties: "+properties.getProperty("s1.address"));
+	}
+	
+	private void closeDriver() {		
+		 LOG.info("Closing driver");
+		 driver.close();
+	}
+	
+	private void quitDriver() {		
+		 LOG.info("Quitting driver");
+		 driver.quit();
 	}
 
 }

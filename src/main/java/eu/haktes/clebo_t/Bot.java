@@ -27,9 +27,9 @@ public class Bot {
 
 	private static final Logger LOG = (Logger) LogManager.getLogger(Bot.class);
 	private static final String DRIVER_PATH = "C:\\Java\\chromedriver.exe";
-	private Properties properties;
-	private WebDriver driver;
-	private Point lastMousePos = new Point(3, 500);
+	protected Properties properties;
+	protected WebDriver driver;
+	protected Point lastMousePos = new Point(3, 500);
 
 	public void start() {
 		LOG.info("BOT started");
@@ -98,7 +98,7 @@ public class Bot {
 
 	}
 
-	private void startDriver() {
+	protected void startDriver() {
 		LOG.info("DRIVER - Locate driver.");
 
 		File f = new File(DRIVER_PATH);
@@ -129,7 +129,7 @@ public class Bot {
 		// driver = new ChromeDriver(chromeOptions);
 	}
 
-	private void getProperties() {
+	protected void getProperties() {
 		try {
 			this.properties = new GetPropertyValues().getPropValues();
 		} catch (IOException e1) {
@@ -139,12 +139,12 @@ public class Bot {
 		}
 	}
 
-	private void closeDriver() {
+	protected void closeDriver() {
 		LOG.info("Closing driver");
 		driver.close();
 	}
 
-	private void quitDriver() {
+	protected void quitDriver() {
 		LOG.info("Quitting driver");
 		driver.quit();
 	}

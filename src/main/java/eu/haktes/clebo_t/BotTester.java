@@ -11,20 +11,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import eu.haktes.clebo_t.actions.BasicActions;
+import eu.haktes.clebo_t.actions.DriverUtil;
 import eu.haktes.clebo_t.actions.Resources;
 import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
 import eu.haktes.clebo_t.interaction.mouse.MovementPath;
 import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
 
-public class BotLazy extends Bot {
+public class BotTester extends Bot {
 
-	private static final Logger LOG = (Logger) LogManager.getLogger(BotLazy.class);
+	private static final Logger LOG = (Logger) LogManager.getLogger(BotTester.class);
 
 	public void start() {
 		LOG.info("Lazy BOT started");
 
 		getProperties();
 		startDriver();
+		
+		DriverUtil driverUtil = new DriverUtil(driver);
+		driverUtil.getElementByXpath("asd");
 
 		BasicActions basicActions = new BasicActions(driver);
 		basicActions.loginUser(properties.getProperty("s1.nick"), properties.getProperty("s1.pass"),
@@ -38,6 +42,8 @@ public class BotLazy extends Bot {
 		WebElement weKupZlatky = driver.findElement(By.id("n7"));
 		moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weKupZlatky));
 		weKupZlatky.click();
+		
+		
 
 		// driver.get("C:\\workspace-sts\\Clebo-T\\mouseTest.html");//test
 		// driver.findElement(By.id("absolute");

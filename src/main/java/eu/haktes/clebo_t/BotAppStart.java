@@ -13,7 +13,7 @@ public class BotAppStart {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("0 - Standart bot");
-		System.out.println("1 - other bot...");
+		System.out.println("1 - Tester bot...");
 		System.out.println("2 - Petrov skusobny bot");
 		System.out.println("Select Bot instance:");
 		String choice = sc.nextLine();
@@ -25,8 +25,8 @@ public class BotAppStart {
 			break;
 		}
 		case "1": {
-			BotLazy botLazy = new BotLazy();
-			botLazy.start();
+			BotTester botTester = new BotTester();
+			botTester.start();
 			break;
 		}
 		case "2": {

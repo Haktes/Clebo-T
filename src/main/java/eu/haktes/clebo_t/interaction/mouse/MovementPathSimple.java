@@ -44,7 +44,7 @@ public class MovementPathSimple extends MovementPathTemplate implements Movement
 		for (int i = 0; i <= steps; i++) {			
 			x = pathPartA+rand.nextInt(NOISE);
 			y = pathPartB+rand.nextInt(NOISE);
-			LOG.trace("step:"+i+  " x:"+x+" y:"+y);
+			//LOG.trace("step:"+i+  " x:"+x+" y:"+y);
 			list.add(new int[] { x, y });
 		}
 

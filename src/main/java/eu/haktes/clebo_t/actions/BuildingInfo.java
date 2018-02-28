@@ -12,22 +12,14 @@ public class BuildingInfo {
 	private int nextLevelClay=0;
 	private int nextLevelIron=0;
 	private int nextLevelCrop=0;
-	private int nextLevelTime=0;
-	private int nextLevelTimeVideo=0;
+	private String nextLevelTime="";
+	private String nextLevelTimeVideo="";
 	private int nextLevelCorpConsumption=0;
-	
-	//private int wood =0;
-	//private int clay =0;
-	//private int iron =0;
-	//private int crop =0;
-	
-	//private int maximum = 0;
-	//private int maximumCrop =0;
-	
+		
 	public void Resources() {		
 	}
 	
-	public void Resources(String buildingName, int buildingLevel, int nextLevelWood, int nextLevelClay, int nextLevelIron, int nextLevelCrop, int nextLevelTime, int nextLevelTimeVideo, int nextLevelCorpConsumption) {		
+	public void Resources(String buildingName, int buildingLevel, int nextLevelWood, int nextLevelClay, int nextLevelIron, int nextLevelCrop, String nextLevelTime, String nextLevelTimeVideo, int nextLevelCorpConsumption) {		
 		this.buildingName = buildingName;
 		this.buildingLevel = buildingLevel;
 		this.nextLevelWood = nextLevelWood;
@@ -87,19 +79,19 @@ public class BuildingInfo {
 		this.nextLevelCrop = nextLevelCrop;
 	}
 
-	public int getNextLevelTime() {
+	public String getNextLevelTime() {
 		return nextLevelTime;
 	}
 
-	public void setNextLevelTime(int nextLevelTime) {
+	public void setNextLevelTime(String nextLevelTime) {
 		this.nextLevelTime = nextLevelTime;
 	}
 	
-	public int getNextLevelTimeVideo() {
+	public String getNextLevelTimeVideo() {
 		return nextLevelTimeVideo;
 	}
 
-	public void setNextLevelTimeVideo(int nextLevelTimeVideo) {
+	public void setNextLevelTimeVideo(String nextLevelTimeVideo) {
 		this.nextLevelTimeVideo = nextLevelTimeVideo;
 	}
 

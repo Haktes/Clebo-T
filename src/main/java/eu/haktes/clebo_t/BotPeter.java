@@ -70,6 +70,8 @@ public class BotPeter extends Bot {
 				
 				WebElement budovaLevel = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
 				String level=budovaLevel.getText();
+				level=level.substring(level.length() - 2);
+				level=level.trim();
 				int levelNum=Integer.parseInt(level);
 				buildingInfo[i].setBuildingLevel(levelNum);
 				
@@ -100,23 +102,35 @@ public class BotPeter extends Bot {
 				
 				WebElement budovaNextTime = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[1]/span"));
 				String Ntime=budovaNextTime.getText();
-				int NtimeNum=Integer.parseInt(Ntime);
-				buildingInfo[i].setNextLevelTime(NtimeNum);
+				buildingInfo[i].setNextLevelTime(Ntime);
 				
 				WebElement budovaNextTimeVideo = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[2]/span[1]"));
 				String NtimeVideo=budovaNextTimeVideo.getText();
-				int NtimeVideoNum=Integer.parseInt(NtimeVideo);
-				buildingInfo[i].setNextLevelTimeVideo(NtimeVideoNum);
+				buildingInfo[i].setNextLevelTimeVideo(NtimeVideo);
 			}
 		}
 		
-		//vypis informacii pre policko (napr. 13)
+		//vypis informacii pre policko (napr. 8 - hlavna budova)
 		
-		String nazov= buildingInfo[13].getBuildingName();
-		int level= buildingInfo[13].getBuildingLevel();
+		String nazov= buildingInfo[8].getBuildingName();
+		int level= buildingInfo[8].getBuildingLevel();
+		int nextLevelWood= buildingInfo[8].getNextLevelWood();
+		int nextLevelClay= buildingInfo[8].getNextLevelClay();
+		int nextLevelIron= buildingInfo[8].getNextLevelIron();
+		int nextLevelCrop= buildingInfo[8].getNextLevelCrop();
+		int nextLevelCropConsum= buildingInfo[8].getNextLevelCorpConsumption();
+		String time= buildingInfo[8].getNextLevelTime();
+		String timeVideo= buildingInfo[8].getNextLevelTimeVideo();
 		
 		System.out.println("Názov budovy: "+nazov);
 		System.out.println("Level budovy je:"+level);
+		System.out.println("Wood: "+nextLevelWood);
+		System.out.println("Clay: "+nextLevelClay);
+		System.out.println("Iron: "+nextLevelIron);
+		System.out.println("Crop: "+nextLevelCrop);
+		System.out.println("Crop consume: "+nextLevelCropConsum);
+		System.out.println("Time: "+time);
+		System.out.println("Time after video: "+timeVideo);
 		
 		/*
 		System.out.println("suroviny potrebne na dalsi lvl: w:"+Nwood+" c:"+Nclay+" i:"+Niron+" c:"+Ncorp);

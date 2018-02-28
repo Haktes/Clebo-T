@@ -12,3 +12,4 @@ public interface MovementPath {
 	public List<int[]> getMovementArray(Point startPosition, WebElement elementMoveTo);
 	
 }
+

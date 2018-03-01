@@ -38,79 +38,79 @@ public class BotPeter extends Bot {
 		MoveMouse moveMouse = new MoveMouse(driver);
 		MovementPath pathGenerator = new MovementPathSimple();
 		
-		//inicializacia pola objektov (zatial prazdne pole)
+		//initialization of empty object field
 		BuildingInfo[] buildingInfo = new BuildingInfo[21];
 
 		
 		for(int i=1;i<21;i++) {
 			
-			//kliknut na button centrum dediny
-			WebElement weCentrumDediny = driver.findElement(By.xpath("//*[@id='n2']/a"));
+			//click on the button - village center
+			WebElement weVillageCenter = driver.findElement(By.xpath("//*[@id='n2']/a"));
 			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weCentrumDediny));
-			weCentrumDediny.click();
-			//postupne generovat vsetky policka budov
-			String xpath="//*[@id=\"clickareas\"]/area["+i+"]";
-			WebElement budova = driver.findElement(By.xpath(xpath));
-			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, hlavnaBudova));
-			budova.click();
+			weVillageCenter.click();
 			
-			//ziskat nazov budovy
-			WebElement budovaNazov = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
-			String nazov=budovaNazov.getText();
-			System.out.println(nazov);
+			String xpath="//*[@id=\"clickareas\"]/area["+i+"]";
+			WebElement building = driver.findElement(By.xpath(xpath));
+			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, hlavnaBudova));
+			building.click();
+			
+			//get name of building
+			WebElement buildingName = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
+			String name=buildingName.getText();
+			System.out.println(name);
 
-			//inicializacia i-teho objektu
+			//initialization of i-object
 			buildingInfo[i] = new BuildingInfo();
-			//nastavim nazov policka (ci je na nom budova postavena alebo nie)
-			buildingInfo[i].setBuildingName(nazov);
+			//set the name of i-object
+			buildingInfo[i].setBuildingName(name);
 
-			if(nazov.equals("Postaviť novú budovu")) {
+			if(name.equals("Postaviť novú budovu")) {
 				//do nothing
 			}else {
 				
-				WebElement budovaLevel = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
-				String level=budovaLevel.getText();
+				WebElement buildingLevel = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
+				String level=buildingLevel.getText();
 				level=level.substring(level.length() - 2);
 				level=level.trim();
 				int levelNum=Integer.parseInt(level);
 				buildingInfo[i].setBuildingLevel(levelNum);
 				
-				WebElement budovaNextWood = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[1]"));
-				String Nwood=budovaNextWood.getText();
+				WebElement buildingNextWood = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[1]"));
+				String Nwood=buildingNextWood.getText();
 				int NwoodNum=Integer.parseInt(Nwood);
 				buildingInfo[i].setNextLevelWood(NwoodNum);
 				
-				WebElement budovaNextClay = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[2]"));
-				String Nclay=budovaNextClay.getText();
+				WebElement buildingNextClay = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[2]"));
+				String Nclay=buildingNextClay.getText();
 				int NclayNum=Integer.parseInt(Nclay);
 				buildingInfo[i].setNextLevelClay(NclayNum);
 				
-				WebElement budovaNextIron = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[3]"));
-				String Niron=budovaNextIron.getText();
+				WebElement buildingNextIron = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[3]"));
+				String Niron=buildingNextIron.getText();
 				int NironNum=Integer.parseInt(Niron);
 				buildingInfo[i].setNextLevelIron(NironNum);
 				
-				WebElement budovaNextCrop = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[4]"));
-				String Ncrop=budovaNextCrop.getText();
+				WebElement buildingNextCrop = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[4]"));
+				String Ncrop=buildingNextCrop.getText();
 				int NcropNum=Integer.parseInt(Ncrop);
 				buildingInfo[i].setNextLevelCrop(NcropNum);
 				
-				WebElement budovaNextCropConsumption = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[5]"));
-				String NcropConsum=budovaNextCropConsumption.getText();
+				WebElement buildingNextCropConsumption = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[5]"));
+				String NcropConsum=buildingNextCropConsumption.getText();
 				int NcropConsumNum=Integer.parseInt(NcropConsum);
 				buildingInfo[i].setNextLevelCorpConsumption(NcropConsumNum);
 				
-				WebElement budovaNextTime = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[1]/span"));
-				String Ntime=budovaNextTime.getText();
+				WebElement buildingNextTime = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[1]/span"));
+				String Ntime=buildingNextTime.getText();
 				buildingInfo[i].setNextLevelTime(Ntime);
 				
-				WebElement budovaNextTimeVideo = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[2]/span[1]"));
-				String NtimeVideo=budovaNextTimeVideo.getText();
+				WebElement buildingNextTimeVideo = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[2]/span[1]"));
+				String NtimeVideo=buildingNextTimeVideo.getText();
 				buildingInfo[i].setNextLevelTimeVideo(NtimeVideo);
 			}
 		}
 		
-		//vypis informacii pre policko (napr. 8 - hlavna budova)
+		//print the info about building
 		
 		String nazov= buildingInfo[8].getBuildingName();
 		int level= buildingInfo[8].getBuildingLevel();
@@ -131,15 +131,6 @@ public class BotPeter extends Bot {
 		System.out.println("Crop consume: "+nextLevelCropConsum);
 		System.out.println("Time: "+time);
 		System.out.println("Time after video: "+timeVideo);
-		
-		/*
-		System.out.println("suroviny potrebne na dalsi lvl: w:"+Nwood+" c:"+Nclay+" i:"+Niron+" c:"+Ncorp);
-		System.out.println("Cas potrebny na vystavbu je: "+Ntime);
-		System.out.println("Zrýchleny cas potrebny na vystavbu po pozreti videa je: "+NtimeVideo);
-		System.out.println("Spotreba obilia pre budovu je:"+NcorpConsum);
-		*/
-		
-		
 		
 		//WebElement weKupZlatky = driver.findElement(By.id("n7"));
 		//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weKupZlatky));
@@ -164,6 +155,7 @@ public class BotPeter extends Bot {
 
 		// close after 10 seconds
 		try {
+			/*
 			Thread.sleep(1000);
 			LOG.info("exit in 10");
 			Thread.sleep(1000);
@@ -179,6 +171,7 @@ public class BotPeter extends Bot {
 			Thread.sleep(1000);
 			LOG.info("exit in 4");
 			Thread.sleep(1000);
+			*/
 			LOG.info("exit in 3");
 			Thread.sleep(1000);
 			LOG.info("exit in 2");

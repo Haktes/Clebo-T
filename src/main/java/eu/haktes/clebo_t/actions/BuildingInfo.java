@@ -1,7 +1,7 @@
 package eu.haktes.clebo_t.actions;
 
 /**
- * Class to store resources
+ * Class for storing information about currently built buildings
  */
 
 public class BuildingInfo {	
@@ -16,10 +16,10 @@ public class BuildingInfo {
 	private String nextLevelTimeVideo="";
 	private int nextLevelCorpConsumption=0;
 		
-	public void Resources() {		
+	public void BuildingInfo() {		
 	}
 	
-	public void Resources(String buildingName, int buildingLevel, int nextLevelWood, int nextLevelClay, int nextLevelIron, int nextLevelCrop, String nextLevelTime, String nextLevelTimeVideo, int nextLevelCorpConsumption) {		
+	public void BuildingInfo(String buildingName, int buildingLevel, int nextLevelWood, int nextLevelClay, int nextLevelIron, int nextLevelCrop, String nextLevelTime, String nextLevelTimeVideo, int nextLevelCorpConsumption) {		
 		this.buildingName = buildingName;
 		this.buildingLevel = buildingLevel;
 		this.nextLevelWood = nextLevelWood;

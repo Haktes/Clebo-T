@@ -15,6 +15,7 @@ public class BotAppStart {
 		System.out.println("0 - Standart bot");
 		System.out.println("1 - Tester bot...");
 		System.out.println("2 - Petrov skusobny bot");
+		System.out.println("3 - TestBot - can be deleted if I forgot to delete it");
 		System.out.println("Select Bot instance:");
 		String choice = sc.nextLine();
 
@@ -32,6 +33,11 @@ public class BotAppStart {
 		case "2": {
 			BotPeter botPeter = new BotPeter();
 			botPeter.start();
+			break;
+		}
+		case "3": {
+			BotNaSkusku skuska = new BotNaSkusku();
+			skuska.start();
 			break;
 		}
 		default: {

@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 
 import eu.haktes.clebo_t.actions.BasicActions;
 import eu.haktes.clebo_t.actions.BuildingInfo;
+import eu.haktes.clebo_t.actions.DriverUtil;
+import eu.haktes.clebo_t.actions.ResourceFieldInfo;
 import eu.haktes.clebo_t.actions.Resources;
 import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
 import eu.haktes.clebo_t.interaction.mouse.MovementPath;
@@ -40,7 +42,10 @@ public class BotPeter extends Bot {
 		
 		//initialization of empty object field
 		BuildingInfo[] buildingInfo = new BuildingInfo[21];
-
+		//ResourceFieldInfo[] resourceFieldInfo = new ResourceFieldInfo[21];
+		
+		//initialize driverUtil object
+		DriverUtil driverUtil = new DriverUtil(driver);
 		
 		for(int i=1;i<21;i++) {
 			
@@ -62,12 +67,15 @@ public class BotPeter extends Bot {
 			//initialization of i-object
 			buildingInfo[i] = new BuildingInfo();
 			//set the name of i-object
-			buildingInfo[i].setBuildingName(name);
+			
 
-			if(name.equals("Postaviť novú budovu")) {
-				//do nothing
+			
+			WebElement result = driverUtil.getElementByXpath("//*[@id=\"build\"]");
+			if(result != null) {
+				buildingInfo[i].setBuildingName("Empty field");
 			}else {
 				
+				buildingInfo[i].setBuildingName(name);
 				WebElement buildingLevel = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
 				String level=buildingLevel.getText();
 				level=level.substring(level.length() - 2);
@@ -110,17 +118,28 @@ public class BotPeter extends Bot {
 			}
 		}
 		
-		//print the info about building
+		String nazov= buildingInfo[6].getBuildingName();
+		String nazovv= buildingInfo[7].getBuildingName();
+		String nazovvv= buildingInfo[8].getBuildingName();
 		
-		String nazov= buildingInfo[8].getBuildingName();
-		int level= buildingInfo[8].getBuildingLevel();
-		int nextLevelWood= buildingInfo[8].getNextLevelWood();
-		int nextLevelClay= buildingInfo[8].getNextLevelClay();
-		int nextLevelIron= buildingInfo[8].getNextLevelIron();
-		int nextLevelCrop= buildingInfo[8].getNextLevelCrop();
-		int nextLevelCropConsum= buildingInfo[8].getNextLevelCorpConsumption();
-		String time= buildingInfo[8].getNextLevelTime();
-		String timeVideo= buildingInfo[8].getNextLevelTimeVideo();
+		System.out.println(nazov);
+		System.out.println(nazovv);
+		System.out.println(nazovvv);
+		
+		
+		
+		
+		//print the info about building
+		/*
+		String nazov= buildingInfo[7].getBuildingName();
+		int level= buildingInfo[7].getBuildingLevel();
+		int nextLevelWood= buildingInfo[7].getNextLevelWood();
+		int nextLevelClay= buildingInfo[7].getNextLevelClay();
+		int nextLevelIron= buildingInfo[7].getNextLevelIron();
+		int nextLevelCrop= buildingInfo[7].getNextLevelCrop();
+		int nextLevelCropConsum= buildingInfo[7].getNextLevelCorpConsumption();
+		String time= buildingInfo[7].getNextLevelTime();
+		String timeVideo= buildingInfo[7].getNextLevelTimeVideo();
 		
 		System.out.println("Názov budovy: "+nazov);
 		System.out.println("Level budovy je:"+level);
@@ -131,6 +150,14 @@ public class BotPeter extends Bot {
 		System.out.println("Crop consume: "+nextLevelCropConsum);
 		System.out.println("Time: "+time);
 		System.out.println("Time after video: "+timeVideo);
+		*/
+		
+		
+		
+		
+		
+		
+		
 		
 		//WebElement weKupZlatky = driver.findElement(By.id("n7"));
 		//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weKupZlatky));

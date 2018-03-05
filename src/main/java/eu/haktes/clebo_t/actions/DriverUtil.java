@@ -23,8 +23,9 @@ public class DriverUtil {
 	 */
 	public WebElement getElementByXpath(String xpath) {
 		WebElement weResult = null;
+		
 		try {
-			driver.findElement(By.xpath(xpath));
+			weResult=driver.findElement(By.xpath(xpath));
 		} catch (NoSuchElementException e) {
 			LOG.warn("No such element getElementByXpath: "+xpath);
 		}

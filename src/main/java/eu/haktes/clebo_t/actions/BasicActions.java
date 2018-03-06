@@ -34,37 +34,41 @@ public class BasicActions {
 
 	/**
 	 * Get resources in current village
+	 * or null if cant
 	 */
 	public Resources getResources(Resources resources) {
-		//int number = Integer.parseInt(numberAsString);
-
-		// Xpath=//tagname[@attribute='value']
 		// By.xpath("//div[@class='alert alert-count']/p/b)
-		// <li id="stockBarWarehouseWrapper" class="stock">
+		
+		try {
 		WebElement weResourcePanel = driver.findElement(By.xpath("//ul[@id='stockBar']"));
+		
 		String max = weResourcePanel.findElement(By.xpath("//span[@id='stockBarWarehouse']")).getText();
-		LOG.info("sklad: "+max);
-		
+		String maxCrop = weResourcePanel.findElement(By.xpath("//span[@id='stockBarGranary']")).getText();
 		String res1 = weResourcePanel.findElement(By.xpath("//li[@id='stockBarResource1']")).getText();
-
-		LOG.info("drev: "+res1);
-
-		
 		String res2 = weResourcePanel.findElement(By.xpath("//li[@id='stockBarResource2']")).getText();
-		LOG.info("hlin: "+res2);		
-		resources.setClay(Integer.parseInt(res2.replaceAll("[^0-9\\-]","")));
-		LOG.info("Parsed:"+resources.getClay());
-		
-		
 		String res3 = weResourcePanel.findElement(By.xpath("//li[@id='stockBarResource3']")).getText();
-		LOG.info("zel: "+res3);
 		String res4 = weResourcePanel.findElement(By.xpath("//li[@id='stockBarResource4']")).getText();
-		LOG.info("obil: "+res4);
-		String maxC = weResourcePanel.findElement(By.xpath("//span[@id='stockBarGranary']")).getText();
-		LOG.info("skladObMax: "+maxC);
+		
+		resources.setMaximum(stringToInt(max));
+		resources.setMaximumCrop(stringToInt(maxCrop));
+		resources.setWood(stringToInt(res1));
+		resources.setClay(stringToInt(res2));
+		resources.setIron(stringToInt(res3));
+		resources.setCrop(stringToInt(res4));
 
 		return resources;
-
+		
+		} catch (Exception e) {
+			LOG.error("Can't get resources!  "+e);
+		}
+		
+		return null;
+	}
+	
+	public int stringToInt(String inputString) {
+		int outputInt = Integer.parseInt(inputString.replaceAll("[^0-9\\-]",""));
+		
+		return outputInt;
 	}
 
 }

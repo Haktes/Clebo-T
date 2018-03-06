@@ -14,10 +14,10 @@ public class Resources {
 	private int maximum = 0;
 	private int maximumCrop =0;
 	
-	public void Resources() {		
+	public Resources() {		
 	}
 	
-	public void Resources(int wood, int clay, int iron, int crop, int maximum, int maximumCrop) {		
+	public Resources(int wood, int clay, int iron, int crop, int maximum, int maximumCrop) {		
 		this.wood = wood;
 		this.clay = clay;
 		this.iron = iron;
@@ -26,9 +26,15 @@ public class Resources {
 		this.maximumCrop = maximumCrop;
 	}
 	
-	public void Resources(int wood, int clay, int iron, int crop) {		
-		Resources(wood, clay, iron, crop, 0, 0);
+	public Resources(int wood, int clay, int iron, int crop) {		
+		this(wood, clay, iron, crop, 0, 0);
 	}	
+	
+	@Override
+	public String toString() {
+		return "Resources [wood=" + wood + ", clay=" + clay + ", iron=" + iron + ", crop=" + crop + ", maximum="
+				+ maximum + ", maximumCrop=" + maximumCrop + "]";
+	}
 	
 	public int getMaximum() {
 		return maximum;

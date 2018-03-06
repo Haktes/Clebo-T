@@ -59,7 +59,7 @@ public class BasicActions {
 		return resources;
 		
 		} catch (Exception e) {
-			LOG.error("Can't get resources!  "+e);
+			LOG.error("Can't get resources!");
 		}
 		
 		return null;

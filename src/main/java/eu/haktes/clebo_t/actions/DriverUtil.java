@@ -26,10 +26,26 @@ public class DriverUtil {
 		
 		try {
 			weResult=driver.findElement(By.xpath(xpath));
+			
 		} catch (NoSuchElementException e) {
 			LOG.warn("No such element getElementByXpath: "+xpath);
 		}
 		return weResult;
+	}
+	
+	public String getElementByClass(String class_name) {
+		WebElement weResult = null;
+		String exist="";
+		
+		try {
+			weResult=driver.findElement(By.className(class_name));
+			exist="yes";
+			
+		} catch (NoSuchElementException e) {
+			LOG.warn("No such element getElementByClass: "+class_name+" field is not empty");
+			exist="no";
+		}
+		return exist;
 	}
 
 }

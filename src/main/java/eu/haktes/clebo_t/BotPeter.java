@@ -48,7 +48,7 @@ public class BotPeter extends Bot {
 		DriverUtil driverUtil = new DriverUtil(driver);
 		
 		for(int i=1;i<21;i++) {
-			
+			String name="";
 			//click on the button - village center
 			WebElement weVillageCenter = driver.findElement(By.xpath("//*[@id='n2']/a"));
 			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weCentrumDediny));
@@ -61,8 +61,9 @@ public class BotPeter extends Bot {
 			
 			//get name of building
 			WebElement buildingName = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
-			String name=buildingName.getText();
-			System.out.println(name);
+			name=buildingName.getText();
+			
+			
 
 			//initialization of i-object
 			buildingInfo[i] = new BuildingInfo();
@@ -70,11 +71,12 @@ public class BotPeter extends Bot {
 			
 
 			
-			WebElement result = driverUtil.getElementByXpath("//*[@id=\"build\"]");
-			if(result != null) {
+			String result = driverUtil.getElementByClass("gid0");
+			
+			if(result.equals("yes")) {
 				buildingInfo[i].setBuildingName("Empty field");
-			}else {
 				
+			}else {
 				buildingInfo[i].setBuildingName(name);
 				WebElement buildingLevel = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
 				String level=buildingLevel.getText();

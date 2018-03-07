@@ -40,12 +40,17 @@ public class BotPeter extends Bot {
 		MoveMouse moveMouse = new MoveMouse(driver);
 		MovementPath pathGenerator = new MovementPathSimple();
 		
-		//initialization of empty object field
+		//initialization of empty object field for buildings
 		BuildingInfo[] buildingInfo = new BuildingInfo[21];
-		//ResourceFieldInfo[] resourceFieldInfo = new ResourceFieldInfo[21];
+		//initialization of empty object field for ResourceFields
+		ResourceFieldInfo[] resourceFieldInfo = new ResourceFieldInfo[21];
+		
 		
 		//initialize driverUtil object
 		DriverUtil driverUtil = new DriverUtil(driver);
+		
+		
+		//---------------------------------Building Info Part---------------------------------------
 		
 		for(int i=1;i<21;i++) {
 			String name="";
@@ -56,21 +61,16 @@ public class BotPeter extends Bot {
 			
 			String xpath="//*[@id=\"clickareas\"]/area["+i+"]";
 			WebElement building = driver.findElement(By.xpath(xpath));
-			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, hlavnaBudova));
+			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, building));
 			building.click();
 			
 			//get name of building
 			WebElement buildingName = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
 			name=buildingName.getText();
 			
-			
-
 			//initialization of i-object
 			buildingInfo[i] = new BuildingInfo();
-			//set the name of i-object
-			
-
-			
+			//check if gid0 class exists		
 			String result = driverUtil.getElementByClass("gid0");
 			
 			if(result.equals("yes")) {
@@ -120,28 +120,16 @@ public class BotPeter extends Bot {
 			}
 		}
 		
-		String nazov= buildingInfo[6].getBuildingName();
-		String nazovv= buildingInfo[7].getBuildingName();
-		String nazovvv= buildingInfo[8].getBuildingName();
-		
-		System.out.println(nazov);
-		System.out.println(nazovv);
-		System.out.println(nazovvv);
-		
-		
-		
-		
-		//print the info about building
-		/*
-		String nazov= buildingInfo[7].getBuildingName();
-		int level= buildingInfo[7].getBuildingLevel();
-		int nextLevelWood= buildingInfo[7].getNextLevelWood();
-		int nextLevelClay= buildingInfo[7].getNextLevelClay();
-		int nextLevelIron= buildingInfo[7].getNextLevelIron();
-		int nextLevelCrop= buildingInfo[7].getNextLevelCrop();
-		int nextLevelCropConsum= buildingInfo[7].getNextLevelCorpConsumption();
-		String time= buildingInfo[7].getNextLevelTime();
-		String timeVideo= buildingInfo[7].getNextLevelTimeVideo();
+				
+		String nazov= buildingInfo[8].getBuildingName();
+		int level= buildingInfo[8].getBuildingLevel();
+		int nextLevelWood= buildingInfo[8].getNextLevelWood();
+		int nextLevelClay= buildingInfo[8].getNextLevelClay();
+		int nextLevelIron= buildingInfo[8].getNextLevelIron();
+		int nextLevelCrop= buildingInfo[8].getNextLevelCrop();
+		int nextLevelCropConsum= buildingInfo[8].getNextLevelCorpConsumption();
+		String time= buildingInfo[8].getNextLevelTime();
+		String timeVideo= buildingInfo[8].getNextLevelTimeVideo();
 		
 		System.out.println("Názov budovy: "+nazov);
 		System.out.println("Level budovy je:"+level);
@@ -152,11 +140,96 @@ public class BotPeter extends Bot {
 		System.out.println("Crop consume: "+nextLevelCropConsum);
 		System.out.println("Time: "+time);
 		System.out.println("Time after video: "+timeVideo);
-		*/
+		
+		//-------------------------------------End of BuildingInfo part---------------------------------
+		
+		//-------------------------------------ResourceFieldInfo part-----------------------------------
 		
 		
 		
+		for(int i=1;i<18;i++) {
+			//click on the button - village Resources
+			WebElement weVillageResources = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weCentrumDediny));
+			weVillageResources.click();
+			
+			String xpathResource="//*[@id=\"rx\"]/area["+i+"]";
+			WebElement resourceField = driver.findElement(By.xpath(xpathResource));
+			//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, building));
+			resourceField.click();
+			
+			//get name of building
+			WebElement resourceFieldName = driver.findElement(By.xpath("//*[@id=\"content\"]/h1"));
+			String fieldName=resourceFieldName.getText();
+			
+			//initialization of i-object
+			resourceFieldInfo[i] = new ResourceFieldInfo();
+			
+			
+			resourceFieldInfo[i].setFieldType(fieldName);
+			
+			
+			String fieldlevel=fieldName.substring(fieldName.length() - 2);
+			fieldlevel=fieldlevel.trim();
+			int fieldLevel=Integer.parseInt(fieldlevel);
+			resourceFieldInfo[i].setFieldLevel(fieldLevel);
+																	
+			WebElement fieldNextWood = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[1]"));
+			String fieldNwood=fieldNextWood.getText();
+			int fieldNwoodNum=Integer.parseInt(fieldNwood);
+			resourceFieldInfo[i].setNextFieldLevelWood(fieldNwoodNum);
+			
+			WebElement fieldNextClay = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[2]"));
+			String fieldNclay=fieldNextClay.getText();
+			int fieldNclayNum=Integer.parseInt(fieldNclay);
+			resourceFieldInfo[i].setNextFieldLevelClay(fieldNclayNum);
+			
+			WebElement fieldNextIron = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[3]"));
+			String fieldNiron=fieldNextIron.getText();
+			int fieldNironNum=Integer.parseInt(fieldNiron);
+			resourceFieldInfo[i].setNextFieldLevelIron(fieldNironNum);
+			
+			WebElement fieldNextCrop = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[4]"));
+			String fieldNcrop=fieldNextCrop.getText();
+			int fieldNcropNum=Integer.parseInt(fieldNcrop);
+			resourceFieldInfo[i].setNextFieldLevelCrop(fieldNcropNum);
+			
+			WebElement fieldNextCropConsum = driver.findElement(By.xpath("//*[@id=\"contract\"]/div/div/div/span[5]"));
+			String fieldNcropConsum=fieldNextCropConsum.getText();
+			int fieldNcropConsumNum=Integer.parseInt(fieldNcropConsum);
+			resourceFieldInfo[i].setNextFieldLevelCropConsumption(fieldNcropConsumNum);
+			
+			
+			WebElement fieldNextTime = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[1]/span"));
+			String fieldNtime=fieldNextTime.getText();
+			resourceFieldInfo[i].setNextFieldLevelTime(fieldNtime);
+
+			WebElement fieldNextTimeVideo = driver.findElement(By.xpath("//*[@id=\"build\"]/div[3]/div[4]/div[2]/span[1]"));
+			String fieldNtimeVideo=fieldNextTimeVideo.getText();
+			resourceFieldInfo[i].setNextFieldLevelTimeVideo(fieldNtimeVideo);
+			
+						
+		}
 		
+		String fnazov= resourceFieldInfo[8].getFieldType();
+		int flevel= resourceFieldInfo[8].getFieldLevel();
+		int fnextLevelWood= resourceFieldInfo[8].getNextFieldLevelWood();
+		int fnextLevelClay= resourceFieldInfo[8].getNextFieldLevelClay();
+		int fnextLevelIron= resourceFieldInfo[8].getNextFieldLevelIron();
+		int fnextLevelCrop= resourceFieldInfo[8].getNextFieldLevelCrop();
+		int fnextLevelCropConsum= resourceFieldInfo[8].getNextFieldLevelCropConsumption();
+		String ftime= resourceFieldInfo[8].getNextFieldLevelTime();
+		String ftimeVideo= resourceFieldInfo[8].getNextFieldLevelTimeVideo();
+		
+		System.out.println("Názov budovy: "+fnazov);
+		System.out.println("Level budovy je:"+flevel);
+		System.out.println("Wood: "+fnextLevelWood);
+		System.out.println("Clay: "+fnextLevelClay);
+		System.out.println("Iron: "+fnextLevelIron);
+		System.out.println("Crop: "+fnextLevelCrop);
+		System.out.println("Crop consume: "+fnextLevelCropConsum);
+		System.out.println("Time: "+ftime);
+		System.out.println("Time after video: "+ftimeVideo);
 		
 		
 		

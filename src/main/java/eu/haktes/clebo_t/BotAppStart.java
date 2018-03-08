@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import eu.haktes.clebo_t.bots.BotPeter;
 import eu.haktes.clebo_t.bots.BotTester;
-import eu.haktes.clebo_t.bots.BotTesterCsv;
+import eu.haktes.clebo_t.bots.BotCsv;
 
 /**
  * Start here
@@ -41,7 +41,7 @@ public class BotAppStart {
             }
 
             case "3": {
-                Bot botCsv = new BotTesterCsv();
+                Bot botCsv = new BotCsv();
                 botCsv.start();
                 break;
             }

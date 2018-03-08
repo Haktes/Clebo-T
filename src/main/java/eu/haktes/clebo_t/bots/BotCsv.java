@@ -5,12 +5,12 @@ import org.apache.logging.log4j.core.Logger;
 
 import eu.haktes.clebo_t.Bot;
 
-public class BotTesterCsv
+public class BotCsv
     extends
     Bot {
 
     private static final Logger LOG =
-        (Logger) LogManager.getLogger(BotTesterCsv.class);
+        (Logger) LogManager.getLogger(BotCsv.class);
 
     public void start() {
 

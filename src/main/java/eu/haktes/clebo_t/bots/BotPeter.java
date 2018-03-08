@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t;
+package eu.haktes.clebo_t.bots;
 
 import java.util.Properties;
 
@@ -10,6 +10,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import eu.haktes.clebo_t.Bot;
 import eu.haktes.clebo_t.actions.BasicActions;
 import eu.haktes.clebo_t.actions.BuildingInfo;
 import eu.haktes.clebo_t.actions.ResourceFieldInfo;

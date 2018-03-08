@@ -22,6 +22,7 @@ import eu.haktes.clebo_t.actions.Resources;
 import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
 import eu.haktes.clebo_t.interaction.mouse.MovementPath;
 import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
+import eu.haktes.clebo_t.utils.GetPropertyValues;
 
 public class Bot {
 

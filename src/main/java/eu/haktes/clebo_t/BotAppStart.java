@@ -2,43 +2,54 @@ package eu.haktes.clebo_t;
 
 import java.util.Scanner;
 
+import eu.haktes.clebo_t.bots.BotPeter;
+import eu.haktes.clebo_t.bots.BotTester;
+import eu.haktes.clebo_t.bots.BotTesterCsv;
+
 /**
  * Start here
  */
 public class BotAppStart {
 
-	public static void main(String[] args) {
-		System.out.println("Bot selection");
+    public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
+        System.out.println("Bot selection");
 
-		System.out.println("0 - Standart bot");
-		System.out.println("1 - Tester bot...");
-		System.out.println("2 - Petrov skusobny bot");
-		System.out.println("Select Bot instance:");
-		String choice = sc.nextLine();
+        Scanner sc = new Scanner(System.in);
 
-		switch (choice) {
-		case "0": {
-			Bot bot = new Bot();
-			bot.start();
-			break;
-		}
-		case "1": {
-			BotTester botTester = new BotTester();
-			botTester.start();
-			break;
-		}
-		case "2": {
-			BotPeter botPeter = new BotPeter();
-			botPeter.start();
-			break;
-		}
-		default: {
-			System.out.println("Nope!");
-			break;
-		}
-		}
+        System.out.println("0 - Standart bot");
+        System.out.println("1 - Tester bot...");
+        System.out.println("2 - Petrov skusobny bot");
+        System.out.println("Select Bot instance:");
+        String choice = sc.nextLine();
 
-	}
+        switch (choice) {
+            case "0": {
+                Bot bot = new Bot();
+                bot.start();
+                break;
+            }
+            case "1": {
+                BotTester botTester = new BotTester();
+                botTester.start();
+                break;
+            }
+            case "2": {
+                BotPeter botPeter = new BotPeter();
+                botPeter.start();
+                break;
+            }
+
+            case "3": {
+                Bot botCsv = new BotTesterCsv();
+                botCsv.start();
+                break;
+            }
+            default: {
+                System.out.println("Nope!");
+                break;
+            }
+        }
+
+    }
 }

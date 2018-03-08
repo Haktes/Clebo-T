@@ -12,12 +12,12 @@ import org.openqa.selenium.WebElement;
 
 import eu.haktes.clebo_t.actions.BasicActions;
 import eu.haktes.clebo_t.actions.BuildingInfo;
-import eu.haktes.clebo_t.actions.DriverUtil;
 import eu.haktes.clebo_t.actions.ResourceFieldInfo;
 import eu.haktes.clebo_t.actions.Resources;
 import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
 import eu.haktes.clebo_t.interaction.mouse.MovementPath;
 import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
+import eu.haktes.clebo_t.utils.DriverUtil;
 
 public class BotPeter extends Bot {
 

@@ -3,6 +3,8 @@ package eu.haktes.clebo_t.actions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import eu.haktes.clebo_t.utils.DriverUtil;
+
 public class Quests {
 	
 	private DriverUtil driverUtil;

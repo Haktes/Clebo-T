@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.actions;
+package eu.haktes.clebo_t.utils;
 
 public class BasicUtils {
 

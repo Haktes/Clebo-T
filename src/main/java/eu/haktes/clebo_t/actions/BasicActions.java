@@ -7,6 +7,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import eu.haktes.clebo_t.utils.BasicUtils;
+
 public class BasicActions {
 
     private static final Logger LOG =

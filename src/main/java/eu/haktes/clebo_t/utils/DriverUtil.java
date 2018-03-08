@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.actions;
+package eu.haktes.clebo_t.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;

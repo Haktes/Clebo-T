@@ -29,44 +29,44 @@ public class BotPeter extends Bot {
 
 		getProperties();
 		startDriver();
-
-		//initialize driverUtil object
-		DriverUtil driverUtil = new DriverUtil(driver);
+		String times[][]= new String[20][20];
 		
-		String times[][]= new String[10][10];
+		
+		
 		//go through the gid1 - gid40
-		for(int i=1;i<4;i++) {
-			
+		for(int i=1;i<2;i++) {
 			String url="http://t4.answers.travian.sk/index.php?view=toolkit&action=buildingconstructiontimes&gid="+i+"&speed=1&linkdescription=tento+odkaz+pre+server+s+1x+r%C3%BDchlos%C5%A5ou ";
 			driver.get(url);
+			int gid=i;
+			int poleX=0;
+			int poleY=0;
+			
+					
 			
 			//set position of column
 			for(int x=1;x<times.length;x++) {
+				poleX=0;
+				poleY=0;
 				//set position of row
-				for(int y=1;y<times.length;y++) {
+				for(int y=2;y<(times.length)+2;y++) {
 					
-				String xpath="//*[@id=\"contentRight\"]/div[5]/div/table/tbody/tr["+y+"]/td["+x+"]";
+				String xpath="//*[@id=\"contentRight\"]/div[5]/div/table/tbody/tr["+x+"]/td["+y+"]";
 				//get value from table based on position
 				WebElement buildingName = driver.findElement(By.xpath(xpath));
 				String time=buildingName.getText();
 				
 				//store time in array
-				times[x][y]=time;
-				
-				
-				
+				times[poleX][poleY]=time;
+				System.out.println(x+" "+y+ " - "+ times[poleX][poleY]);
+				poleY++;
+								
 				//when table will be in 2D array than finction writeTableToFile(array,nameOfFile) will save the times to csv file
-				
-				
+							
 			}
+				poleX++;
 		}
 				
-			
-			
-			
-			
 				
-			
 		}
 		
 		System.out.println(times[1][1]);	
@@ -78,7 +78,33 @@ public class BotPeter extends Bot {
 		
 		
 		
-		
+		if(gid>0 && gid <5) {
+			//do the mapping of table for 
+			System.out.println("1-5");
+		} else if(gid>4 && gid<10){
+			System.out.println("5-9");
+		} else if(gid>9 && gid<12){
+			System.out.println("10-11");
+		} else if(gid==12){
+			System.out.println("12 - do nothing");
+		} else if(gid>12 && gid<15){
+			System.out.println("13-14");
+		} else if(gid==15){
+			System.out.println("15 - main building - special function");
+		} else if(gid>15 && gid<23){
+			System.out.println("16-22");
+		} else if(gid==23 || gid==35){
+			System.out.println("23 or 35");
+		} else if(gid>23 && gid<35){
+			System.out.println("24-34");
+		} else if(gid>35 && gid<40){
+			System.out.println("36-39");
+		} else if(gid==40){
+			System.out.println("40 - special function");
+		} else if(gid==41){
+			System.out.println("41");
+		}
+				
 		//login
 		/*
 		BasicActions basicActions = new BasicActions(driver);
@@ -126,5 +152,9 @@ public class BotPeter extends Bot {
 		quitDriver();
 
 	}
+	
 
+	
 }
+
+

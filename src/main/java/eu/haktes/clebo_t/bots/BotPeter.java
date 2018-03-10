@@ -160,12 +160,12 @@ public class BotPeter extends Bot {
 	
 public String[][] getTimesOfBuildingslvl20(int a, int b){
 	String[][] times = new String [a][b];
-	
+	int poleX=0;
 
 	//set position of column
 	for(int x=1;x<times.length;x++) {
 		
-		int poleX=0;
+		
 		int poleY=0;
 		//set position of row
 		for(int y=2;y<(times.length)+2;y++) {
@@ -193,11 +193,13 @@ public void saveTimesToCsvFile(String[][] array, String delimiter, String FileNa
 	String[][] timesField=array;
 	
 StringBuilder builder = new StringBuilder();
-for(int i = 0; i < timesField[0].length; i++){
-   for(int j = 0; j < timesField.length; j++){
-      builder.append(timesField[i][j]+"");
-      if(j < timesField.length - 1)
-         builder.append(delimiter);
+for(int i = 0; i < timesField.length; i++){
+   for(int j = 0; j < timesField[0].length; j++){
+      if(timesField[i][j].equals(null)){
+    	  //don´t append nothing
+      }else {
+	   builder.append(timesField[i][j]+"");
+       builder.append(delimiter);
    }
    builder.append("\n");
 }
@@ -215,6 +217,8 @@ try {
 }
 
 	
+}
+
 }
 
 

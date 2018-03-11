@@ -33,11 +33,11 @@ public class BotPeter extends Bot {
 		getProperties();
 		startDriver();
 		String times[][]= new String[20][20];
-		
+		String[] GidNamesBuildings= {"","drevorubac","hlinena_bana","zelezna_bana","obilne_pole","pila","tehelna","zlievaren","mlyn","pekaren","sklad_surovin","sypka","","kovac","turnajove_ihrisko","hlavna_budova","zhromazdisko","trhovisko","ambasada","kasarne","stajne","dielna","akademia","ukryt","radnica","rezidencia","palac","pokladnica","obchodna_kancelaria","velke_kasarne","velke_stajne","mestska_hradba","zemna_hradza","palisada","kamenar","pivovar","pasce","hrdinsky_dvor","velky_sklad_surovin","velka_sypka","div_sveta","zriedlo"};
 		
 		
 		//go through the gid1 - gid40
-		for(int i=1;i<2;i++) {
+		for(int i=1;i<42;i++) {
 			String url="http://t4.answers.travian.sk/index.php?view=toolkit&action=buildingconstructiontimes&gid="+i+"&speed=1&linkdescription=tento+odkaz+pre+server+s+1x+r%C3%BDchlos%C5%A5ou ";
 			driver.get(url);
 			int gid=i;
@@ -45,15 +45,17 @@ public class BotPeter extends Bot {
 		
 			if(gid>0 && gid <5) {
 				times=getTimesOfBuildingslvl20(10, 20);
-				saveTimesToCsvFile(times, ";", "subor");
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("1-5");
 				
 			} else if(gid>4 && gid<10){
 				times=getTimesOfBuildingslvl20(5, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("5-9");
 				
 			} else if(gid>9 && gid<12){
 				times=getTimesOfBuildingslvl20(20, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("10-11");
 				
 			} else if(gid==12){
@@ -61,6 +63,7 @@ public class BotPeter extends Bot {
 				
 			} else if(gid>12 && gid<15){
 				times=getTimesOfBuildingslvl20(20, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("13-14");
 				
 			} else if(gid==15){
@@ -69,26 +72,32 @@ public class BotPeter extends Bot {
 				
 			} else if(gid>15 && gid<23){
 				times=getTimesOfBuildingslvl20(20, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("16-22");
 				
 			} else if(gid==23 || gid==35){
 				times=getTimesOfBuildingslvl20(10, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("23 or 35");
 				
 			} else if(gid>23 && gid<35){
 				times=getTimesOfBuildingslvl20(20, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("24-34");
 				
 			} else if(gid>35 && gid<40){
 				times=getTimesOfBuildingslvl20(20, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("36-39");
 				
 			} else if(gid==40){
 				times=getTimesOfBuildingslvl20(100, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("40 - special function");
 				
 			} else if(gid==41){
 				times=getTimesOfBuildingslvl20(20, 20);
+				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
 				System.out.println("41");
 				
 			}	
@@ -180,7 +189,7 @@ public String[][] getTimesOfBuildingslvl20(int a, int b){
 		System.out.println(x+" "+y+ " - "+ times[poleX][poleY]);
 		poleY++;
 						
-		//when table will be in 2D array than finction writeTableToFile(array,nameOfFile) will save the times to csv file
+		//when table will be in 2D array than function writeTableToFile(array,nameOfFile) will save the times to csv file
 					
 	}
 		poleX++;
@@ -192,31 +201,27 @@ public void saveTimesToCsvFile(String[][] array, String delimiter, String FileNa
 
 	String[][] timesField=array;
 	
-StringBuilder builder = new StringBuilder();
-for(int i = 0; i < timesField.length; i++){
-   for(int j = 0; j < timesField[0].length; j++){
-      if(timesField[i][j].equals(null)){
-    	  //don´t append nothing
-      }else {
-	   builder.append(timesField[i][j]+"");
-       builder.append(delimiter);
-   }
-   builder.append("\n");
-}
-BufferedWriter writer;
-try {
-	writer = new BufferedWriter(new FileWriter("/C:/workspace-sts/Clebo-T/"+FileName+".txt"));
-	writer.write(builder.toString());//save the string representation of the board
-	writer.close();
-} catch (IOException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
-
-
-}
-
-	
+	BufferedWriter writer;
+	try {
+		writer = new BufferedWriter(new FileWriter("C:\\workspace-sts\\Clebo-T\\TimesOfBuild\\"+FileName+".txt"));
+		
+		for(int i = 0; i < timesField.length; i++){
+			   for(int j = 0; j < timesField[0].length; j++){
+			      if(timesField[i][j]==null){
+			    	  //don´t append nothing
+			      }else {
+			    	  writer.write(timesField[i][j]+"");
+			    	  writer.write(delimiter);
+			   }
+			}
+			   writer.newLine();
+		}
+		writer.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+   
 }
 
 }

@@ -33,10 +33,10 @@ public class BotPeter extends Bot {
 		getProperties();
 		startDriver();
 		String times[][]= new String[20][20];
-		String[] GidNamesBuildings= {"","drevorubac","hlinena_bana","zelezna_bana","obilne_pole","pila","tehelna","zlievaren","mlyn","pekaren","sklad_surovin","sypka","","kovac","turnajove_ihrisko","hlavna_budova","zhromazdisko","trhovisko","ambasada","kasarne","stajne","dielna","akademia","ukryt","radnica","rezidencia","palac","pokladnica","obchodna_kancelaria","velke_kasarne","velke_stajne","mestska_hradba","zemna_hradza","palisada","kamenar","pivovar","pasce","hrdinsky_dvor","velky_sklad_surovin","velka_sypka","div_sveta","zriedlo"};
+		//String[] GidNamesBuildings= {"","drevorubac","hlinena_bana","zelezna_bana","obilne_pole","pila","tehelna","zlievaren","mlyn","pekaren","sklad_surovin","sypka","","kovac","turnajove_ihrisko","hlavna_budova","zhromazdisko","trhovisko","ambasada","kasarne","stajne","dielna","akademia","ukryt","radnica","rezidencia","palac","pokladnica","obchodna_kancelaria","velke_kasarne","velke_stajne","mestska_hradba","zemna_hradza","palisada","kamenar","pivovar","pasce","hrdinsky_dvor","velky_sklad_surovin","velka_sypka","div_sveta","zriedlo"};
 		
 		
-		//go through the gid1 - gid40
+		//go through the gid1 - gid40 (1-42)
 		for(int i=1;i<42;i++) {
 			String url="http://t4.answers.travian.sk/index.php?view=toolkit&action=buildingconstructiontimes&gid="+i+"&speed=1&linkdescription=tento+odkaz+pre+server+s+1x+r%C3%BDchlos%C5%A5ou ";
 			driver.get(url);
@@ -44,60 +44,61 @@ public class BotPeter extends Bot {
 			
 		
 			if(gid>0 && gid <5) {
-				times=getTimesOfBuildingslvl20(10, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(10, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("1-5");
 				
 			} else if(gid>4 && gid<10){
-				times=getTimesOfBuildingslvl20(5, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(5, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("5-9");
 				
 			} else if(gid>9 && gid<12){
-				times=getTimesOfBuildingslvl20(20, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(20, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("10-11");
 				
 			} else if(gid==12){
 				System.out.println("12 - do nothing");
 				
 			} else if(gid>12 && gid<15){
-				times=getTimesOfBuildingslvl20(20, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(19, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("13-14");
 				
 			} else if(gid==15){
-				
+				times=getTimesOfMainBuilding(20, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("15 - main building - special function - need update reading from table");
 				
 			} else if(gid>15 && gid<23){
-				times=getTimesOfBuildingslvl20(20, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(20, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("16-22");
 				
 			} else if(gid==23 || gid==35){
-				times=getTimesOfBuildingslvl20(10, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(10, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("23 or 35");
 				
 			} else if(gid>23 && gid<35){
-				times=getTimesOfBuildingslvl20(20, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(20, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("24-34");
 				
 			} else if(gid>35 && gid<40){
-				times=getTimesOfBuildingslvl20(20, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(20, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("36-39");
 				
 			} else if(gid==40){
-				times=getTimesOfBuildingslvl20(100, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(100, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("40 - special function");
 				
 			} else if(gid==41){
-				times=getTimesOfBuildingslvl20(20, 20);
-				saveTimesToCsvFile(times, ";", GidNamesBuildings[i]);
+				times=getTimesOfBuildings(20, 20);
+				saveTimesToCsvFile(times, ";", gid);
 				System.out.println("41");
 				
 			}	
@@ -167,17 +168,17 @@ public class BotPeter extends Bot {
 
 	}
 	
-public String[][] getTimesOfBuildingslvl20(int a, int b){
+public String[][] getTimesOfBuildings(int a, int b){
 	String[][] times = new String [a][b];
 	int poleX=0;
 
 	//set position of column
-	for(int x=1;x<times.length;x++) {
+	for(int x=1;x<times.length+1;x++) {
 		
 		
 		int poleY=0;
 		//set position of row
-		for(int y=2;y<(times.length)+2;y++) {
+		for(int y=2;y<(times[0].length)+2;y++) {
 			
 		String xpath="//*[@id=\"contentRight\"]/div[5]/div/table/tbody/tr["+x+"]/td["+y+"]";
 		//get value from table based on position
@@ -197,13 +198,31 @@ public String[][] getTimesOfBuildingslvl20(int a, int b){
 		return times;
 }
 
-public void saveTimesToCsvFile(String[][] array, String delimiter, String FileName) {
+public String[][] getTimesOfMainBuilding(int a, int b){
+	String[][] times = new String [a][b];
+	//set position of column
+	for(int x=1;x<times.length;x++) {
+			
+		String xpath="//*[@id=\"contentRight\"]/div[5]/div/table/tbody/tr["+x+"]/td["+(x+2)+"]";
+		//get value from table based on position
+		WebElement buildingName = driver.findElement(By.xpath(xpath));
+		String time=buildingName.getText();
+		
+		//store time in array
+		times[x][x]=time;
+		System.out.println(x+" "+(x+2)+ " - "+ times[x][x]);
+}
+		return times;
+}
+
+
+public void saveTimesToCsvFile(String[][] array, String delimiter, int gid) {
 
 	String[][] timesField=array;
 	
 	BufferedWriter writer;
 	try {
-		writer = new BufferedWriter(new FileWriter("C:\\workspace-sts\\Clebo-T\\TimesOfBuild\\"+FileName+".txt"));
+		writer = new BufferedWriter(new FileWriter("C:\\workspace-sts\\Clebo-T\\TimesOfBuild\\gid"+gid+"_buildTime.txt"));
 		
 		for(int i = 0; i < timesField.length; i++){
 			   for(int j = 0; j < timesField[0].length; j++){

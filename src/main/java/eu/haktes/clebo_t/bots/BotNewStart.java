@@ -1,0 +1,65 @@
+package eu.haktes.clebo_t.bots;
+
+import java.util.Properties;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import eu.haktes.clebo_t.Bot;
+import eu.haktes.clebo_t.actions.BasicActions;
+import eu.haktes.clebo_t.actions.Quests;
+import eu.haktes.clebo_t.actions.Resources;
+import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
+import eu.haktes.clebo_t.interaction.mouse.MovementPath;
+import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
+import eu.haktes.clebo_t.utils.DriverUtil;
+
+/**
+ * This bot will try to play new village AFTER race and place selection
+ 
+ * first action: SKIP QUESTS
+ *
+ */
+public class BotNewStart extends Bot {
+
+	private static final Logger LOG = (Logger) LogManager.getLogger(BotNewStart.class);
+
+	public void start() {
+
+		try {
+			Thread.sleep(1000);
+			LOG.info("exit in 10");
+			Thread.sleep(1000);
+			LOG.info("exit in 9");
+			Thread.sleep(1000);
+			LOG.info("exit in 8");
+			Thread.sleep(1000);
+			LOG.info("exit in 7");
+			Thread.sleep(1000);
+			LOG.info("exit in 6");
+			Thread.sleep(1000);
+			LOG.info("exit in 5");
+			Thread.sleep(1000);
+			LOG.info("exit in 4");
+			Thread.sleep(1000);
+			LOG.info("exit in 3");
+			Thread.sleep(1000);
+			LOG.info("exit in 2");
+			Thread.sleep(1000);
+			LOG.info("exit in 1");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		closeDriver();
+		quitDriver();
+
+	}
+
+}

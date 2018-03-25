@@ -5,6 +5,7 @@ import java.util.Scanner;
 import eu.haktes.clebo_t.bots.BotPeter;
 import eu.haktes.clebo_t.bots.BotTester;
 import eu.haktes.clebo_t.bots.BotCsv;
+import eu.haktes.clebo_t.bots.BotNewStart;
 
 /**
  * Start here
@@ -43,6 +44,12 @@ public class BotAppStart {
             case "3": {
                 Bot botCsv = new BotCsv();
                 botCsv.start();
+                break;
+            }
+            
+            case "4": {
+                BotNewStart botNewStart = new BotNewStart();
+                botNewStart.start();
                 break;
             }
             default: {

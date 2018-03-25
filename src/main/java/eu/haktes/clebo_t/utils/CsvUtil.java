@@ -9,10 +9,10 @@ public class CsvUtil {
     /**
      * Return true if directory exists
      */
-    private static boolean doesTheDirectoryExist(String path) {
+    private static boolean doesTheFileExist(String path) {
 
-        File f = new File("path");
-        if (f.exists() && f.isDirectory()) {
+        File file = new File("path");
+        if (file.exists() && !file.isDirectory()) {
             return true;
         }
 

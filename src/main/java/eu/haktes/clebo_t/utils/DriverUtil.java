@@ -1,5 +1,7 @@
 package eu.haktes.clebo_t.utils;
 
+import java.lang.annotation.Target;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.By;
@@ -17,6 +19,16 @@ public class DriverUtil {
 	public DriverUtil(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	public DriverUtil() {
+		
+	}
+	
+	public void setDriver(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	
 
 	/**
 	 * get element by xpath

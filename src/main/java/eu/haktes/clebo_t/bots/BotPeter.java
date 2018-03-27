@@ -18,6 +18,7 @@ import eu.haktes.clebo_t.actions.BasicActions;
 import eu.haktes.clebo_t.actions.BuildResourcesFromTravianAnswers;
 import eu.haktes.clebo_t.actions.BuildTimesFromTravianAnswers;
 import eu.haktes.clebo_t.actions.BuildingInfo;
+import eu.haktes.clebo_t.actions.HeroStatus;
 import eu.haktes.clebo_t.actions.ResourceFieldInfo;
 import eu.haktes.clebo_t.actions.Resources;
 import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
@@ -39,8 +40,20 @@ public class BotPeter extends Bot {
 		//BuildTimesFromTravianAnswers getTimes = new BuildTimesFromTravianAnswers(driver);
 		//getTimes.getBuildTimes();
 		
-		BuildResourcesFromTravianAnswers getResources = new BuildResourcesFromTravianAnswers(driver);
-		getResources.getBuildResources();
+		//BuildResourcesFromTravianAnswers getResources = new BuildResourcesFromTravianAnswers(driver);
+		//getResources.getBuildResources();
+		
+		BasicActions basicActions = new BasicActions(driver);
+		basicActions.loginUser(properties.getProperty("s1.nick"), properties.getProperty("s1.pass"),
+				properties.getProperty("s1.address"));
+		
+		HeroStatus hero=new HeroStatus(0, 0, 0, 0, true, 0, 0, 0, 0);
+		BasicActions BAhero = new BasicActions(driver);
+		BAhero.getHeroStatus(hero);
+		System.out.println(hero.getOffBonus());
+		System.out.println(hero.getDeffBonus());
+		System.out.println(hero.getHealth());
+		System.out.println(hero.getSpeedPerField());
 		
 				
 				

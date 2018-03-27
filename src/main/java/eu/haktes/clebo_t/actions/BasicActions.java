@@ -78,5 +78,77 @@ public class BasicActions {
 
         return null;
     }
+    
+    public void getHeroStatus(HeroStatus hero) {
+    	
+    	WebElement weHeroStats = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+		//moveMouse.moveMouse(lastMousePos, pathGenerator.getMovementArray(lastMousePos, weCentrumDediny));
+		weHeroStats.click();
+    	
+    	////*[@id="attributes"]/div[1]/div[3]/table/tbody/tr[1]/td[2]/span
+    	WebElement heroStats =
+                driver.findElement(By.xpath("//*[@id=\"content\"]"));
+    	
+    	String health = heroStats
+                .findElement(By.xpath("//*[@id=\"attributes\"]/div[1]/div[3]/table/tbody/tr[1]/td[2]/span"))
+                .getText();
+    	System.out.println(health);
+    	health=health.replace("%", "");
+    	System.out.println(health);
+    	int healthInt=Integer.parseInt(health);
+    	System.out.println(healthInt);
+    	hero.setHealth(healthInt);
+    	
+    	String experiences = heroStats
+                .findElement(By.xpath("//*[@id=\"attributes\"]/div[1]/div[3]/table/tbody/tr[2]/td[2]/span"))
+                .getText();
+    	int experiencesInt=Integer.parseInt(experiences);
+    	hero.setXp(experiencesInt);
+    	
+    	String speedPerField = heroStats
+                .findElement(By.xpath("//*[@id=\"heroSpeedValueNumber\"]"))
+                .getText();
+    	int speedPerFieldInt=Integer.parseInt(speedPerField);
+    	hero.setSpeedPerField(speedPerFieldInt);
+    	
+    	String plusProduction = heroStats
+                .findElement(By.xpath("//*[@id=\"attributes\"]/div[1]/div[3]/table/tbody/tr[3]/td[2]/span/span[1]/span"))
+                .getText();
+    	int plusProductionInt=Integer.parseInt(plusProduction);
+    	hero.setSpeedPerField(plusProductionInt);
+    	
+    	Boolean heroHidden = heroStats
+                .findElement(By.xpath("//*[@id=\"attackBehaviourHide\"]"))
+                .isSelected();
+    	hero.setHeroHidden(heroHidden);
+    	
+    	String strength = heroStats
+                .findElement(By.xpath("//*[@id=\"attributepower\"]/td[2]/span"))
+                .getText();
+    	int strengthInt=Integer.parseInt(strength);
+    	hero.setStrength(strengthInt);
+    	
+    	String offBonus = heroStats
+                .findElement(By.xpath("//*[@id=\"attributeoffBonus\"]/td[2]/span"))
+                .getText();
+    	offBonus=offBonus.replace("%", "");
+    	int offBonusInt=Integer.parseInt(offBonus);
+    	hero.setOffBonus(offBonusInt);
+    	
+    	String deffBonus = heroStats
+                .findElement(By.xpath("//*[@id=\"attributedefBonus\"]/td[2]/span"))
+                .getText();
+    	deffBonus=deffBonus.replace("%", "");
+    	int deffBonusInt=Integer.parseInt(deffBonus);
+    	hero.setDeffBonus(deffBonusInt);
+    	
+    	String productionPoints = heroStats
+                .findElement(By.xpath("//*[@id=\"attributeproductionPoints\"]/td[2]/span"))
+                .getText();
+    	int productionPointsInt=Integer.parseInt(productionPoints);
+    	hero.setProductionPoints(productionPointsInt);
+    	
+    	
+    }
 
 }

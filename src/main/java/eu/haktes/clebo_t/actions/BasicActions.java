@@ -100,11 +100,8 @@ public void getHeroStatus(HeroStatus hero) {
     	String health = heroStats
                 .findElement(By.xpath("//*[@id=\"attributes\"]/div[1]/div[3]/table/tbody/tr[1]/td[2]/span"))
                 .getText();
-    	System.out.println(health);
     	health=health.replace("%", "");
-    	System.out.println(health);
     	int healthInt=BasicUtils.stringToInt(health);
-    	System.out.println(healthInt);
     	hero.setHealth(healthInt);
     	
     	String experiences = heroStats

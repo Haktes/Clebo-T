@@ -123,7 +123,7 @@ public void getHeroStatus(HeroStatus hero) {
                 .findElement(By.xpath("//*[@id=\"attributes\"]/div[1]/div[3]/table/tbody/tr[3]/td[2]/span/span[1]/span"))
                 .getText();
     	int plusProductionInt=BasicUtils.stringToInt(plusProduction);
-    	hero.setSpeedPerField(plusProductionInt);
+    	hero.setHeroPlusProduction(plusProductionInt);
     	
     	Boolean heroHidden = heroStats
                 .findElement(By.xpath("//*[@id=\"attackBehaviourHide\"]"))

@@ -59,5 +59,19 @@ public class DriverUtil {
 		}
 		return exist;
 	}
+	
+	public boolean existElementByXpath(String xpath, WebDriver driver) {
+		System.out.println(driver);
+		//Boolean isPresent = driver.findElements(By.xpath(xpath)).size() > 0;
+		
+		try {
+	        driver.findElement(By.xpath(xpath));
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	    return true;
+		
+		
+	}
 
 }

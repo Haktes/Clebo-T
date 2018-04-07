@@ -85,10 +85,13 @@ public void getHeroStatus(HeroStatus hero) {
     }
 
 public boolean existExpedition() {
-	String className="//*[@id=\"button5ac7e56b00e7c\"]/div[2]/div[2]";
+	String xpathExpedition="//*[@id=\"button5ac887decbb65\"]/div[2]/div[1]/div/div/div";
 	
+	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+	weHome.click();
+		
 	DriverUtil util=new DriverUtil();
-	boolean expeditionExist=util.existElementByXpath(className, driver);
+	boolean expeditionExist=util.existElementByXpath(xpathExpedition, driver);
 		
 	return expeditionExist;
 }

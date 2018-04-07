@@ -65,10 +65,14 @@ public class DriverUtil {
 		
 		try {
 	        driver.findElement(By.xpath(xpath));
+	        System.out.println("existuje");
+	        return true;
 	    } catch (NoSuchElementException e) {
-	        return false;
+	    	System.out.println("neexistuje");
+	    	return false;
+	        
 	    }
-	    return true;
+	   
 		
 		
 	}

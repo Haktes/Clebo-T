@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.interaction.mouse;
+package org.haktes.clebo_t.interaction.mouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class MovementPathTemplate implements MovementPath {
 
 	/**
 	 * Same as  @see eu.haktes.clebo_t.interaction#getMovementArray()  but the steps are calculated
-	 * {@link eu.haktes.clebo_t.interaction.mouse#getMovementArray(Point startPosition, WebElement elementMoveTo, int steps)}
+	 * {@link org.haktes.clebo_t.interaction.mouse#getMovementArray(Point startPosition, WebElement elementMoveTo, int steps)}
 	 */
 	public List<int[]> getMovementArray(Point startPosition, WebElement elementMoveTo) {
 

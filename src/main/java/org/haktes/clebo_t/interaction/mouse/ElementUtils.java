@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.interaction.mouse;
+package org.haktes.clebo_t.interaction.mouse;
 
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;

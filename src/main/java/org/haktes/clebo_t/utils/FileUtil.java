@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.utils;
+package org.haktes.clebo_t.utils;
 
 import java.io.BufferedReader;
 import java.io.File;

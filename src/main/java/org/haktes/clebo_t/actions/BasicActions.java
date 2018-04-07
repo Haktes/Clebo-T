@@ -1,14 +1,13 @@
-package eu.haktes.clebo_t.actions;
+package org.haktes.clebo_t.actions;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.haktes.clebo_t.utils.BasicUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import eu.haktes.clebo_t.utils.BasicUtils;
 
 public class BasicActions {
 

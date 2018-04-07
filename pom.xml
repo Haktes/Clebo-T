@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>eu.haktes</groupId>
+	<groupId>org.haktes</groupId>
 	<artifactId>clebo-t</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -51,7 +51,7 @@
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
 							<mainClass>
-								eu.haktes.clebo_t.BotAppStart
+								org.haktes.clebo_t.BotAppStart
 							</mainClass>
 						</manifest>
 					</archive>
@@ -71,7 +71,7 @@
 							<archive>
 								<manifest>
 									<mainClass>
-										eu.haktes.clebo_t.BotAppStart
+										org.haktes.clebo_t.BotAppStart
 									</mainClass>
 								</manifest>
 							</archive>

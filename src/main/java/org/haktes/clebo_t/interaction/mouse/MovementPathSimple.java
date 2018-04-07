@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.interaction.mouse;
+package org.haktes.clebo_t.interaction.mouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,9 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.haktes.clebo_t.BotAppStart;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-
-import eu.haktes.clebo_t.BotAppStart;
 
 public class MovementPathSimple extends MovementPathTemplate implements MovementPath {
 	

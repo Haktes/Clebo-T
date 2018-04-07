@@ -1,9 +1,8 @@
-package eu.haktes.clebo_t.bots;
+package org.haktes.clebo_t.bots;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
-
-import eu.haktes.clebo_t.Bot;
+import org.haktes.clebo_t.Bot;
 
 public class BotCsv
     extends

@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.bots;
+package org.haktes.clebo_t.bots;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +11,16 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.haktes.clebo_t.Bot;
+import org.haktes.clebo_t.actions.BasicActions;
+import org.haktes.clebo_t.actions.Quests;
+import org.haktes.clebo_t.actions.Resources;
+import org.haktes.clebo_t.interaction.mouse.MoveMouse;
+import org.haktes.clebo_t.interaction.mouse.MovementPath;
+import org.haktes.clebo_t.interaction.mouse.MovementPathSimple;
+import org.haktes.clebo_t.utils.DriverUtil;
+import org.haktes.clebo_t.utils.FileUtil;
+import org.haktes.clebo_t.utils.GetPropertyValues;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.Point;
@@ -18,17 +28,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-import eu.haktes.clebo_t.Bot;
-import eu.haktes.clebo_t.actions.BasicActions;
-import eu.haktes.clebo_t.actions.Quests;
-import eu.haktes.clebo_t.actions.Resources;
-import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
-import eu.haktes.clebo_t.interaction.mouse.MovementPath;
-import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
-import eu.haktes.clebo_t.utils.DriverUtil;
-import eu.haktes.clebo_t.utils.FileUtil;
-import eu.haktes.clebo_t.utils.GetPropertyValues;
 
 /**
  * This bot will try to play new village AFTER race and place selection the firs

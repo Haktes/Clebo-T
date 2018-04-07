@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t;
+package org.haktes.clebo_t;
 
 // treba mat stiahnutu 1.8 JDK
 // eclipse ak nezoberie maven tak treba stiahnut aktulanu, nastavit a pridat do

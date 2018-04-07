@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.actions;
+package org.haktes.clebo_t.actions;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

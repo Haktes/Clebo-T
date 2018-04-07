@@ -1,15 +1,14 @@
-package eu.haktes.clebo_t.utils;
+package org.haktes.clebo_t.utils;
 
 import java.lang.annotation.Target;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.haktes.clebo_t.Bot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import eu.haktes.clebo_t.Bot;
 
 public class DriverUtil {
 	

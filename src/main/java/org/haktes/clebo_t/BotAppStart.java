@@ -1,11 +1,11 @@
-package eu.haktes.clebo_t;
+package org.haktes.clebo_t;
 
 import java.util.Scanner;
 
-import eu.haktes.clebo_t.bots.BotPeter;
-import eu.haktes.clebo_t.bots.BotTester;
-import eu.haktes.clebo_t.bots.BotCsv;
-import eu.haktes.clebo_t.bots.BotNewStart;
+import org.haktes.clebo_t.bots.BotCsv;
+import org.haktes.clebo_t.bots.BotNewStart;
+import org.haktes.clebo_t.bots.BotPeter;
+import org.haktes.clebo_t.bots.BotTester;
 
 /**
  * Start here

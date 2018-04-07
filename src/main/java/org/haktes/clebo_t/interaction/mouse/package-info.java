@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t.interaction.mouse;
+package org.haktes.clebo_t.interaction.mouse;
 
 /**
  * This class contains interaction with the browser

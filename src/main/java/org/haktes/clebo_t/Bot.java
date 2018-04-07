@@ -1,4 +1,4 @@
-package eu.haktes.clebo_t;
+package org.haktes.clebo_t;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,12 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.haktes.clebo_t.actions.BasicActions;
+import org.haktes.clebo_t.actions.Resources;
+import org.haktes.clebo_t.interaction.mouse.MoveMouse;
+import org.haktes.clebo_t.interaction.mouse.MovementPath;
+import org.haktes.clebo_t.interaction.mouse.MovementPathSimple;
+import org.haktes.clebo_t.utils.GetPropertyValues;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
@@ -16,13 +22,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-
-import eu.haktes.clebo_t.actions.BasicActions;
-import eu.haktes.clebo_t.actions.Resources;
-import eu.haktes.clebo_t.interaction.mouse.MoveMouse;
-import eu.haktes.clebo_t.interaction.mouse.MovementPath;
-import eu.haktes.clebo_t.interaction.mouse.MovementPathSimple;
-import eu.haktes.clebo_t.utils.GetPropertyValues;
 
 public class Bot {
 

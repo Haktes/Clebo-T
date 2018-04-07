@@ -1,1 +1,1 @@
-package eu.haktes.clebo_t.utils;
+package org.haktes.clebo_t.utils;

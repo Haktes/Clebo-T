@@ -85,7 +85,8 @@ public void getHeroStatus(HeroStatus hero) {
     }
 
 public boolean existExpedition() {
-	String xpathExpedition="//*[@id=\"button5ac887decbb65\"]/div[2]/div[1]/div/div/div";
+	////*[@id="button5ac89e9ae5664"]/div[2]/div[2]
+	String xpathExpedition="//*[@class=\"layoutButton auctionWhite green  \"]";
 	
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
 	weHome.click();

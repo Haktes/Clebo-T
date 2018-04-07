@@ -97,4 +97,90 @@ public boolean existExpedition() {
 	return expeditionExist;
 }
 
+public void setHeroBonusProductionWood() {
+	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+	weHome.click();
+	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+	weHero.click();
+	WebElement weRadioWood = driver.findElement(By.xpath("//*[@id=\"resourceHero1\"]"));
+	weRadioWood.click();
+	WebElement weSaveButton = driver.findElement(By.xpath("//*[@id=\"saveHeroAttributes\"]/div/div[2]"));
+	weSaveButton.click();
+}
+
+public void setHeroBonusProductionClay() {
+	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+	weHome.click();
+	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+	weHero.click();
+	WebElement weRadioWood = driver.findElement(By.xpath("//*[@id=\"resourceHero2\"]"));
+	weRadioWood.click();
+	WebElement weSaveButton = driver.findElement(By.xpath("//*[@id=\"saveHeroAttributes\"]/div/div[2]"));
+	weSaveButton.click();
+}
+
+public void setHeroBonusProductionIron() {
+	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+	weHome.click();
+	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+	weHero.click();
+	WebElement weRadioWood = driver.findElement(By.xpath("//*[@id=\"resourceHero3\"]"));
+	weRadioWood.click();
+	WebElement weSaveButton = driver.findElement(By.xpath("//*[@id=\"saveHeroAttributes\"]/div/div[2]"));
+	weSaveButton.click();
+}
+
+public void setHeroBonusProductionCrop() {
+	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+	weHome.click();
+	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+	weHero.click();
+	WebElement weRadioWood = driver.findElement(By.xpath("//*[@id=\"resourceHero4\"]"));
+	weRadioWood.click();
+	WebElement weSaveButton = driver.findElement(By.xpath("//*[@id=\"saveHeroAttributes\"]/div/div[2]"));
+	weSaveButton.click();
+}
+
+public void setHeroBonusProductionAvg() {
+	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
+	weHome.click();
+	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+	weHero.click();
+	WebElement weRadioWood = driver.findElement(By.xpath("//*[@id=\"resourceHero0\"]"));
+	weRadioWood.click();
+	WebElement weSaveButton = driver.findElement(By.xpath("//*[@id=\"saveHeroAttributes\"]/div/div[2]"));
+	weSaveButton.click();
+}
+
+public String getHeroBonusProduction() {
+	int resource=-1;
+	String resourceName="";
+	
+	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+	weHero.click();
+	
+	for(int i=0;i<4;i++) {
+    boolean bonusResource = driver.findElement(By.xpath("//*[@id=\"resourceHero"+i+"\"]")).isSelected();
+	if(bonusResource==true) {
+		resource=i;
+	}else {
+		
+	}
+	}
+	switch (resource) {
+    case 0:  resourceName="avg";
+            break;
+    case 1:  resourceName="wood";
+    		break;
+    case 2:  resourceName="clay";
+    		break;
+    case 3:  resourceName="iron";
+    		break;
+    case 4:  resourceName="crop";
+    		break;
+	}
+	
+	return resourceName;
+	
+}
 }

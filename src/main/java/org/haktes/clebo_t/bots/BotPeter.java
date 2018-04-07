@@ -60,6 +60,13 @@ public class BotPeter extends Bot {
 		boolean vyprava = heroAction.existExpedition();
 		System.out.println(vyprava);
 		
+		String production=heroAction.getHeroBonusProduction();
+		System.out.println(production);
+		
+		heroAction.setHeroBonusProductionCrop();
+
+		production=heroAction.getHeroBonusProduction();
+		System.out.println(production);
 				
 				
 				// close after 3 seconds

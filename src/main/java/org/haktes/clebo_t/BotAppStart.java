@@ -6,7 +6,7 @@ import org.haktes.clebo_t.bots.BotCsv;
 import org.haktes.clebo_t.bots.BotNewStart;
 import org.haktes.clebo_t.bots.BotPeter;
 import org.haktes.clebo_t.bots.BotTester;
-import org.haktes.clebo_t.final_bots.PostBot;
+import org.haktes.clebo_t.final_bots.PostTestBot;
 
 /**
  * Start here
@@ -50,7 +50,7 @@ public class BotAppStart {
             }
             
             case "5": {
-                PostBot.SendTest();
+                PostTestBot.SendTest();
                 break;
             }
             default: {

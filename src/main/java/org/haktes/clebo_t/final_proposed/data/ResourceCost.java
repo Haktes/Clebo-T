@@ -1,4 +1,4 @@
-package org.haktes.clebo_t.actions;
+package org.haktes.clebo_t.final_proposed.data;
 
 public class ResourceCost {
 
@@ -7,19 +7,19 @@ public class ResourceCost {
 	private int iron = 0;
 	private int crop = 0;
 	private int cropConsumption = 0;
-	private int timeInMinutes = 0;
+	private int timeInSeconds = 0;
 
 	public ResourceCost() {
 	}
 
-	public ResourceCost(int wood, int clay, int iron, int crop, int cropConsumption, int timeInMinutes) {
+	public ResourceCost(int wood, int clay, int iron, int crop, int cropConsumption, int timeInSeconds) {
 		super();
 		this.wood = wood;
 		this.clay = clay;
 		this.iron = iron;
 		this.crop = crop;
 		this.cropConsumption = cropConsumption;
-		this.timeInMinutes = timeInMinutes;
+		this.timeInSeconds = timeInSeconds;
 	}
 
 	public ResourceCost(int wood, int clay, int iron, int crop, int cropConsumption) {
@@ -70,12 +70,12 @@ public class ResourceCost {
 		this.cropConsumption = cropConsumption;
 	}
 
-	public int getTimeInMinutes() {
-		return timeInMinutes;
+	public int getTimeInSeconds() {
+		return timeInSeconds;
 	}
 
-	public void setTimeInMinutes(int timeInMinutes) {
-		this.timeInMinutes = timeInMinutes;
+	public void setTimeInSeconds(int timeInMinutes) {
+		this.timeInSeconds = timeInMinutes;
 	}
 
 }

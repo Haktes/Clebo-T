@@ -1,32 +1,39 @@
 package org.haktes.clebo_t.final_bots;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class PostBot {
+public class PostTestBot {
 
 	public static void SendTest() {
 
 		CloseableHttpClient client = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost("https://clebot.haktes.org/");
 
-		//String json = "{\"id\":1,\"name\":\"John\"}";
+		// List<NameValuePair> form = new ArrayList<>();
+		// form.add(new BasicNameValuePair("foo", "bar"));
+		// form.add(new BasicNameValuePair("employee", "John Doe"));
+		// UrlEncodedFormEntity entityForm = new UrlEncodedFormEntity(form,
+		// Consts.UTF_8);
+		// //httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
+
+		// String json = "{\"id\":1,\"name\":\"John\"}";
 
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
@@ -42,7 +49,7 @@ public class PostBot {
 			entity = new StringEntity(json);
 			httpPost.setEntity(entity);
 			httpPost.setHeader("Accept", "application/json");
-			httpPost.setHeader("Content-type", "application/json");
+			// httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
 			CloseableHttpResponse response = client.execute(httpPost);
 			System.out.println("Status: " + response.getStatusLine().getStatusCode());
 

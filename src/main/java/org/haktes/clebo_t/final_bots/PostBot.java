@@ -15,6 +15,10 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class PostBot {
 
 	public static void SendTest() {
@@ -22,7 +26,17 @@ public class PostBot {
 		CloseableHttpClient client = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost("https://clebot.haktes.org/");
 
-		String json = "{\"id\":1,\"name\":\"John\"}";
+		//String json = "{\"id\":1,\"name\":\"John\"}";
+
+		ObjectMapper mapper = new ObjectMapper();
+		String json = null;
+		try {
+			json = mapper.writeValueAsString(new testData("Robert", "Fico", "Saso"));
+		} catch (JsonProcessingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		StringEntity entity;
 		try {
 			entity = new StringEntity(json);
@@ -44,4 +58,43 @@ public class PostBot {
 		}
 
 	}
+
+	private static class testData {
+		String name = "Fred";
+		String sureName = "Krieg";
+		String role = "testRole";
+
+		public testData(String name, String sureName, String role) {
+			super();
+			this.name = name;
+			this.sureName = sureName;
+			this.role = role;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getSureName() {
+			return sureName;
+		}
+
+		public void setSureName(String sureName) {
+			this.sureName = sureName;
+		}
+
+		public String getRole() {
+			return role;
+		}
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+
+	}
+
 }

@@ -6,6 +6,7 @@ import org.haktes.clebo_t.bots.BotCsv;
 import org.haktes.clebo_t.bots.BotNewStart;
 import org.haktes.clebo_t.bots.BotPeter;
 import org.haktes.clebo_t.bots.BotTester;
+import org.haktes.clebo_t.final_bots.PostBot;
 
 /**
  * Start here
@@ -21,6 +22,7 @@ public class BotAppStart {
         System.out.println("0 - Standart bot");
         System.out.println("1 - Tester bot...");
         System.out.println("2 - Petrov skusobny bot");
+        System.out.println("5 - postTest");
         System.out.println("Select Bot instance:");
         String choice = sc.nextLine();
 
@@ -47,9 +49,8 @@ public class BotAppStart {
                 break;
             }
             
-            case "4": {
-                BotNewStart botNewStart = new BotNewStart();
-                botNewStart.start();
+            case "5": {
+                PostBot.SendTest();
                 break;
             }
             default: {

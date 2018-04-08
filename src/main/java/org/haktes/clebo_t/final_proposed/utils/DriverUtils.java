@@ -15,6 +15,7 @@ public class DriverUtils {
 	private String lastFindBy = null;
 	private WebElement savedWebElement = null;
 	private String savedFindBy = null;
+	private String url = null;
 	private int step = 0;
 
 	public DriverUtils(WebDriver driver) {
@@ -28,6 +29,7 @@ public class DriverUtils {
 		try {
 			if (!driver.findElements(by).isEmpty()) { // if not empty
 				step++;
+				url = driver.getCurrentUrl();
 				lastFindBy = by.toString();
 				lastElement = driver.findElement(by);
 				return this;
@@ -65,6 +67,9 @@ public class DriverUtils {
 	}
 	public String getLastOperation() {
 		return lastFindBy;
+	}
+	public String getUrl(){
+		return url;
 	}
 
 }

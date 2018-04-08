@@ -3,6 +3,7 @@ BotNewStart/
 
 #sensitive properties
 src/main/resources/application.properties
+src/main/resources/finalbot.properties
 src/main/resources/BotNewStart.properties
 
 # Compiled class file

@@ -18,6 +18,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class PostTestBot {
 
@@ -38,6 +39,7 @@ public class PostTestBot {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
 		try {
+			//json = mapper.writer().withRootName("test").writeValueAsString(new testData("Robert", "Fico", "Saso"));
 			json = mapper.writeValueAsString(new testData("Robert", "Fico", "Saso"));
 		} catch (JsonProcessingException e1) {
 			// TODO Auto-generated catch block

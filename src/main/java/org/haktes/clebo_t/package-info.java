@@ -1,4 +1,5 @@
 package org.haktes.clebo_t;
+// travian uses https://www.visitorjs.com/
 
 // treba mat stiahnutu 1.8 JDK
 // eclipse ak nezoberie maven tak treba stiahnut aktulanu, nastavit a pridat do
@@ -12,17 +13,17 @@ package org.haktes.clebo_t;
 
 // nastavit aj pre projekt 1.8 ked to hubuje
 
-// trav. strategy guide http://www.travian-strategy-guide.com/advanced-techniques/village-specialization
+// trav. strategy guide
+// http://www.travian-strategy-guide.com/advanced-techniques/village-specialization
 
 /*
-//Locate element for which you wants to retrieve x y coordinates.
-WebElement Image = driver.findElement(By.xpath("//img[@border='0']"));
-
-//Used points class to get x and y coordinates of element.
-Point point = Image.getLocation();
-int xcord = point.getX();
-System.out.println("Element's Position from left side Is "+xcord +" pixels.");
-int ycord = point.getY();
-System.out.println("Element's Position from top side Is "+ycord +" pixels.");
-
-*/
+ * //Locate element for which you wants to retrieve x y coordinates. WebElement
+ * Image = driver.findElement(By.xpath("//img[@border='0']"));
+ * 
+ * //Used points class to get x and y coordinates of element. Point point =
+ * Image.getLocation(); int xcord = point.getX();
+ * System.out.println("Element's Position from left side Is "+xcord
+ * +" pixels."); int ycord = point.getY();
+ * System.out.println("Element's Position from top side Is "+ycord +" pixels.");
+ * 
+ */

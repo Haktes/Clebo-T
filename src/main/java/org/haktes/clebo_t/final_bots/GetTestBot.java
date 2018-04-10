@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class GetTestBot {
 
+	/**
+	 * Test sending data
+	 */
 	public static void GetTest() {
 		String DRIVER_PATH = "C:\\Java\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", DRIVER_PATH);

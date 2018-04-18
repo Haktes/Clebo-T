@@ -51,22 +51,15 @@ public class BotPeter extends Bot {
 		
 		HeroStatus hero=new HeroStatus(0, 0, 0, 0, true, 0, 0, 0, 0);
 		
-		heroAction.getHeroStatus(hero);
-		System.out.println(hero.getOffBonus());
-		System.out.println(hero.getDeffBonus());
-		System.out.println(hero.getHealth());
-		System.out.println(hero.getSpeedPerField());
 		
-		boolean vyprava = heroAction.existExpedition();
-		System.out.println(vyprava);
+		DriverUtil util=new DriverUtil(driver);
+		String whereIs=heroAction.inWhichWillageIsHero();	
+		System.out.println(whereIs);
+		//boolean atHome=heroAction.isHeroAtHome();
+		//System.out.println("Hero is at home:"+atHome);
 		
-		String production=heroAction.getHeroBonusProduction();
-		System.out.println(production);
-		
-		heroAction.setHeroBonusProductionCrop();
 
-		production=heroAction.getHeroBonusProduction();
-		System.out.println(production);
+		
 				
 				
 				// close after 3 seconds

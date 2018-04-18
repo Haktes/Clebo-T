@@ -44,25 +44,23 @@ public class DriverUtil {
 		return weResult;
 	}
 	
-	public String getElementByClass(String class_name) {
+	public boolean getElementByClass(String class_name) {
 		WebElement weResult = null;
-		String exist="";
+		boolean exist=false;
 		
 		try {
 			weResult=driver.findElement(By.className(class_name));
-			exist="yes";
+			exist=true;
 			
 		} catch (NoSuchElementException e) {
 			LOG.warn("No such element getElementByClass: "+class_name+" field is not empty");
-			exist="no";
+			exist=false;
 		}
 		return exist;
 	}
 	
 	public boolean existElementByXpath(String xpath, WebDriver driver) {
-		System.out.println(driver);
-		//Boolean isPresent = driver.findElements(By.xpath(xpath)).size() > 0;
-		
+				
 		try {
 	        driver.findElement(By.xpath(xpath));
 	        System.out.println("existuje");
@@ -72,9 +70,6 @@ public class DriverUtil {
 	    	return false;
 	        
 	    }
-	   
-		
-		
 	}
 
 }

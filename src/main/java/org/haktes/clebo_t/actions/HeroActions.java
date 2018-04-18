@@ -85,7 +85,7 @@ public void getHeroStatus(HeroStatus hero) {
     }
 
 public boolean existExpedition() {
-	////*[@id="button5ac89e9ae5664"]/div[2]/div[2]
+	//returns boolean value if any expedition exists
 	String xpathExpedition="//*[@class=\"layoutButton auctionWhite green  \"]";
 	
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
@@ -98,6 +98,7 @@ public boolean existExpedition() {
 }
 
 public void setHeroBonusProductionWood() {
+	//set hero bonus on wood resource
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
 	weHome.click();
 	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
@@ -109,6 +110,7 @@ public void setHeroBonusProductionWood() {
 }
 
 public void setHeroBonusProductionClay() {
+	//set hero bonus on clay resource
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
 	weHome.click();
 	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
@@ -120,6 +122,7 @@ public void setHeroBonusProductionClay() {
 }
 
 public void setHeroBonusProductionIron() {
+	//set hero bonus on iron resource
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
 	weHome.click();
 	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
@@ -131,6 +134,7 @@ public void setHeroBonusProductionIron() {
 }
 
 public void setHeroBonusProductionCrop() {
+	//set hero bonus on crop resource
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
 	weHome.click();
 	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
@@ -142,6 +146,7 @@ public void setHeroBonusProductionCrop() {
 }
 
 public void setHeroBonusProductionAvg() {
+	//set average hero bonus on each resource
 	WebElement weHome = driver.findElement(By.xpath("//*[@id=\"n1\"]/a"));
 	weHome.click();
 	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
@@ -153,13 +158,14 @@ public void setHeroBonusProductionAvg() {
 }
 
 public String getHeroBonusProduction() {
+	//returns resource on which is currently applied hero bonus
 	int resource=-1;
 	String resourceName="";
 	
 	WebElement weHero = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
 	weHero.click();
 	
-	for(int i=0;i<4;i++) {
+	for(int i=0;i<5;i++) {
     boolean bonusResource = driver.findElement(By.xpath("//*[@id=\"resourceHero"+i+"\"]")).isSelected();
 	if(bonusResource==true) {
 		resource=i;
@@ -182,5 +188,33 @@ public String getHeroBonusProduction() {
 	
 	return resourceName;
 	
+}
+
+public boolean isHeroAtHome() {
+	boolean atHome=true;
+	DriverUtil util=new DriverUtil(driver);
+	boolean result=util.getElementByClass("heroStatus100");	
+	if(result=true) {
+		atHome=true;
+	}else {
+		atHome=false;
+	}
+	return atHome;
+}
+public String inWhichWillageIsHero() {
+	String willage="";
+	boolean home=isHeroAtHome();
+	if(home=true) {
+		WebElement weHeroInfo = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
+		weHeroInfo.click();
+		
+		WebElement weWillage = driver.findElement(By.xpath("//*[@id=\"attributes\"]/div[1]/div[1]/div/span/a"));
+		willage=weWillage.getText();
+	}else {
+		willage="Hero is not at home.";
+	}
+	
+	
+	return willage;
 }
 }

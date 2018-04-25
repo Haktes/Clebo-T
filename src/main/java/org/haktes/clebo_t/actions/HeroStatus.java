@@ -1,6 +1,8 @@
 package org.haktes.clebo_t.actions;
 
 public class HeroStatus {
+
+
 int health;
 int xp;
 int speedPerField;
@@ -10,6 +12,10 @@ int strength;
 int offBonus;
 int deffBonus;
 int productionPoints;
+
+public HeroStatus() {
+	
+}
 
 public HeroStatus(int health, int xp, int speedPerField, int heroPlusProduction, boolean heroHidden, int strength,
 		int offBonus, int deffBonus, int productionPoints) {

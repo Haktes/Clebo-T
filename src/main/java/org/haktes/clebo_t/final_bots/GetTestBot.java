@@ -18,9 +18,9 @@ public class GetTestBot {
 		WebDriver driver = new ChromeDriver();
 		DriverUtils driverUtilsHero = new DriverUtils(driver);
 
-		driver.get("https://ts29.travian.sk/hero.php");
-		driver.findElement(By.xpath("//input[@name='name']")).sendKeys("xxx");
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("xxx");
+		driver.get("https://ts3.travian.sk/hero.php");
+		driver.findElement(By.xpath("//input[@name='name']")).sendKeys("middlefinger");
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("middlefinger123");
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(Keys.ENTER);
 
 		try {

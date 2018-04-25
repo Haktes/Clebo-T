@@ -5,6 +5,7 @@ import org.haktes.clebo_t.utils.DriverUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import java.util.List;
 
 public class HeroActions {
 
@@ -216,5 +217,28 @@ public String inWhichWillageIsHero() {
 	
 	
 	return willage;
+}
+
+public String[][] getListOfExpeditions(){
+	
+	String[][] listOfExpeditions;
+	if(existExpedition()==true) {
+		
+		listOfExpeditions= new String[0][0];
+		WebElement weHeroBar = driver.findElement(By.xpath("//div[@id=\"sidebarBoxHero\"]"));
+				
+		weHeroBar.findElement(By.xpath("//button[@class=\"layoutButton adventureWhite green  \"]"));
+		weHeroBar.click();
+		System.out.println(driver.getCurrentUrl());
+		WebElement weTableOfExp = driver.findElement(By.xpath("//*[@id=\"adventureListForm\"]/table/tbody"));
+		
+		List<WebElement>weExpTable = weTableOfExp.findElements(By.tagName("tr"));
+		System.out.println(weExpTable.get(2));
+		
+	}else {
+		System.out.println("No Expedition available.");
+		listOfExpeditions= new String[0][0];
+	}
+	return listOfExpeditions;
 }
 }

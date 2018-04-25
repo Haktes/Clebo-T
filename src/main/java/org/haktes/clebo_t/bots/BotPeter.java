@@ -52,11 +52,7 @@ public class BotPeter extends Bot {
 		HeroStatus hero=new HeroStatus(0, 0, 0, 0, true, 0, 0, 0, 0);
 		
 		
-		DriverUtil util=new DriverUtil(driver);
-		String whereIs=heroAction.inWhichWillageIsHero();	
-		System.out.println(whereIs);
-		//boolean atHome=heroAction.isHeroAtHome();
-		//System.out.println("Hero is at home:"+atHome);
+		heroAction.getListOfExpeditions();
 		
 
 		

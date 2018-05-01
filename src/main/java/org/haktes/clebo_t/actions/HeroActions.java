@@ -219,22 +219,46 @@ public String inWhichWillageIsHero() {
 	return willage;
 }
 
+public int getNumberOfExpeditions() {
+	int number=0;
+	WebElement heroTable = driver.findElement(By.xpath("//*[@id=\"sidebarBoxHero\"]/div[2]/div[1]"));
+	String num = heroTable.findElement(By.className("speechBubbleContent")).getText();
+	number=Integer.parseInt(num);
+	return number;
+}
+
 public String[][] getListOfExpeditions(){
 	
 	String[][] listOfExpeditions;
 	if(existExpedition()==true) {
 		
-		listOfExpeditions= new String[0][0];
-		WebElement weHeroBar = driver.findElement(By.xpath("//div[@id=\"sidebarBoxHero\"]"));
-				
-		weHeroBar.findElement(By.xpath("//button[@class=\"layoutButton adventureWhite green  \"]"));
+		listOfExpeditions= new String[getNumberOfExpeditions()][9];
+		WebElement weHeroBar = driver.findElement(By.xpath("//*[@id=\"heroImageButton\"]"));
 		weHeroBar.click();
-		System.out.println(driver.getCurrentUrl());
+		
+		WebElement weExpeditions=driver.findElement(By.xpath("//button[@class=\"layoutButton adventureWhite green  \"]"));
+		weExpeditions.click();
+				
 		WebElement weTableOfExp = driver.findElement(By.xpath("//*[@id=\"adventureListForm\"]/table/tbody"));
 		
 		List<WebElement>weExpTable = weTableOfExp.findElements(By.tagName("tr"));
-		System.out.println(weExpTable.get(2));
-		
+	
+		for(int i=0;i<getNumberOfExpeditions()-1;i++) {
+			String tr="";
+			tr=weExpTable.get(i).getText();
+			String[] detailOfExp=tr.split(" ");
+			
+			for(int j=0;j<detailOfExp.length;j++) {
+				detailOfExp[j]=listOfExpeditions[i][j];	
+			}
+			
+		}
+		System.out.println(weExpTable.get(2).getText());
+		for(int p=0;p<listOfExpeditions.length;p++) {
+			for(int o=0;o<listOfExpeditions[p].length;o++) {
+				System.out.println(listOfExpeditions[p][o]);	
+			}System.out.println();
+		}
 	}else {
 		System.out.println("No Expedition available.");
 		listOfExpeditions= new String[0][0];

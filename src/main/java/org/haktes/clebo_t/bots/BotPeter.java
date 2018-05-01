@@ -51,7 +51,7 @@ public class BotPeter extends Bot {
 		
 		HeroStatus hero=new HeroStatus(0, 0, 0, 0, true, 0, 0, 0, 0);
 		
-		
+		System.out.println(heroAction.getNumberOfExpeditions());
 		heroAction.getListOfExpeditions();
 		
 
